@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StripUp - Вебкам Студия</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Весь твой CSS отсюда */
+        :root {
+            --primary-pink: #ff9bb9;
+            --light-pink: #ffd1dc;
+            --peach: #ffcc99;
+            --dark-pink: #ff4d8d;
+            --text-color: #5a3d5c;
+            --light-text: #7a5c7d;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--light-pink) 0%, var(--peach) 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text-color); line-height: 1.6; background: var(--gradient); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* ... (весь остальной CSS из твоего кода) ... */
+    </style>
+</head>
+<body>
+    <!-- Весь HTML-контент, который ты отправлял -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-crown"></i> StripUp
+                </div>
+                <div class="nav-links">
+                    <a href="#">Главная</a>
+                    <a href="#">О нас</a>
+                    <a href="#">Условия</a>
+                </div>
+                <a href="https://t.me/stripup_support" class="header-btn">Написать в Telegram</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- (оставляешь все секции hero, features, how-it-works, cta, footer и модалки — как в твоём коде) -->
+
+    <script>
+        // Весь твой JavaScript отсюда
+        function openModal(modalId) { document.getElementById(modalId).style.display = 'flex'; }
+        function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) { event.target.style.display = 'none'; }
+        });
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.feature-card').forEach(card => { observer.observe(card); });
+    </script>
+</body>
+</html>
