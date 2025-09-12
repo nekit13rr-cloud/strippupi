@@ -62,6 +62,8 @@
             color: var(--dark-pink);
             display: flex;
             align-items: center;
+            cursor: pointer;
+            text-decoration: none;
         }
  
         .logo i {
@@ -426,7 +428,7 @@
  
         .benefit-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px極35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
  
         .benefit-icon {
@@ -866,9 +868,9 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-crown"></i> StripUp
-                </div>
+                <a href="#" class="logo" id="logoLink">
+                    <i class="fas fa-crown" id="logoIcon"></i> StripUp
+                </a>
                 <div class="nav-links">
                     <a href="#">Главная</a>
                     <a href="#about">О нас</a>
@@ -880,7 +882,7 @@
         </div>
     </header>
  
-    <section class="hero">
+    <section class="hero" id="heroSection">
         <div class="container">
             <div class="hero-content">
                 <h1>Раскрой свой потенциал и начни зарабатывать!</h1>
@@ -891,7 +893,7 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-value">1500$</span>
+                        <span class="stat-value">120,000 ₽</span>
                         <span class="stat-label">средний доход</span>
                     </div>
                     <div class="stat-item">
@@ -905,17 +907,6 @@
                 </div>
             </div>
         </div>
- 
-        <div class="image-upload">
-            <h3>Загрузите свое фоновое изображение</h3>
-            <div class="image-preview" id="heroBackgroundPreview">
-                <span>Превью фонового изображения</span>
-            </div>
-            <label class="upload-btn">
-                Выбрать файл
-                <input type="file" id="heroBackgroundUpload" accept="image/*" style="display: none;">
-            </label>
-        </div>
     </section>
  
     <section class="about" id="about">
@@ -928,7 +919,7 @@
                     <p>Каждый в команде — особенный. Мы заботимся о защищенности наших моделей, их настроении и реализации. Дорожим командой, поэтому заботимся о комфорте и спокойствии каждого. Приветствуем как девушек, так и парней!</p>
                 </div>
                 <div class="about-image">
-                    <img src="images/image.jpg" alt="image">
+                    <img src="https://i.pinimg.com/736x/8c/6d/15/8c6d15dde2558efbefd8a4250445c395.jpg" alt="Аниме девушка">
                 </div>
             </div>
         </div>
@@ -953,7 +944,7 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Высокий доход</h3>
-                    <p>Зарабатывайте от 1000$ в неделю с ежедневными выплатами и прозрачной системой расчета</p>
+                    <p>Зарабатывайте от 80,000 ₽ в неделю с еженедельными выплатами и прозрачной системой расчета</p>
                 </div>
  
                 <div class="benefit-card animated">
@@ -1007,7 +998,7 @@
                         <li><i class="fas fa-check"></i> Самостоятельная работа без куратора</li>
                         <li><i class="fas fa-check"></i> Помощь с настройкой оборудования</li>
                         <li><i class="fas fa-check"></i> Статистика стримов и минимальные советы</li>
-                        <li><i class="fas fa-check"></i> Выплаты: 1-й месяц еженедельно, далее 2 раза в месяц</li>
+                        <li><i class="fas fa-check"></i> Выплаты: еженедельно</li>
                         <li><i class="fas fa-check"></i> Техническая поддержка 24/7</li>
                     </ul>
                     <a href="https://t.me/stripup_support" class="btn">Выбрать тариф</a>
@@ -1024,7 +1015,7 @@
                         <li><i class="fas fa-check"></i> Персональный коучинг</li>
                         <li><i class="fas fa-check"></i> Разбор работы раз в две недели</li>
                         <li><i class="fas fa-check"></i> Помощь с удалением сливов</li>
-                        <li><i class="fas fa-check"></i> Выплаты: 1-й месяц еженедельно, далее 2 раза в месяц</li>
+                        <li><i class="fas fa-check"></i> Выплаты: еженедельно</li>
                         <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
                     </ul>
                     <a href="https://t.me/stripup_support" class="btn">Выбрать тариф</a>
@@ -1156,26 +1147,6 @@
     </footer>
  
     <script>
-        // Функция для загрузки фонового изображения
-        document.getElementById('heroBackgroundUpload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Устанавливаем новое фоновое изображение
-                    document.querySelector('.hero').style.backgroundImage = `url(${e.target.result})`;
- 
-                    // Обновляем превью
-                    const preview = document.getElementById('heroBackgroundPreview');
-                    preview.innerHTML = '';
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    preview.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            }
-        });
- 
         // Калькулятор дохода
         function calculateIncome() {
             const hours = parseInt(document.getElementById('hours').value) || 0;
@@ -1186,20 +1157,13 @@
             document.getElementById('result').textContent = result.toLocaleString('ru-RU') + ' ₽';
         }
  
-        // Функции для модальных окон
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-        }
- 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
- 
-        // Закрытие модального окна при клике вне его
-        window.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
+        // Прокрутка к началу при клике на логотип
+        document.getElementById('logoLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
  
         // Анимация появления элементов при прокрутке
