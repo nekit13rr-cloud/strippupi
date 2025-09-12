@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StripUp - Вебкам Студия</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,23 +17,27 @@
             --white: #ffffff;
             --gradient: linear-gradient(135deg, var(--light-pink) 0%, var(--peach) 100%);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
-            /* добавлен фон-аниме + полупрозрачный градиент сверху */
-            background:
-              linear-gradient(135deg, rgba(255,209,220,0.55) 0%, rgba(255,204,153,0.55) 100%),
-              url('https://i.pinimg.com/1200x/8c/6d/15/8c6d15dde2558efbefd8a4250445c395.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: var(--gradient);
             overflow-x: hidden;
         }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
+ 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+ 
         /* Header */
         header {
             padding: 20px 0;
@@ -44,9 +48,13 @@
             z-index: 100;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
-
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-
+ 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+ 
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
@@ -57,11 +65,17 @@
             cursor: pointer;
             text-decoration: none;
         }
-
-        .logo i { margin-right: 10px; font-size: 28px; }
-
-        .nav-links { display: flex; gap: 35px; }
-
+ 
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+ 
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+ 
         .nav-links a {
             text-decoration: none;
             color: var(--text-color);
@@ -69,7 +83,7 @@
             transition: color 0.3s;
             position: relative;
         }
-
+ 
         .nav-links a:after {
             content: '';
             position: absolute;
@@ -80,10 +94,15 @@
             background: var(--dark-pink);
             transition: width 0.3s;
         }
-
-        .nav-links a:hover { color: var(--dark-pink); }
-        .nav-links a:hover:after { width: 100%; }
-
+ 
+        .nav-links a:hover {
+            color: var(--dark-pink);
+        }
+ 
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+ 
         .header-btn {
             padding: 12px 25px;
             background: var(--dark-pink);
@@ -94,12 +113,12 @@
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
         }
-
+ 
         .header-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255, 77, 141, 0.4);
         }
-
+ 
         /* Hero Section */
         .hero {
             display: flex;
@@ -109,9 +128,7 @@
             gap: 50px;
             position: relative;
         }
-
-        /* убрали дублирование фонового изображения из ::before,
-           теперь фон используется для всей страницы (см. body) */
+ 
         .hero::before {
             content: '';
             position: absolute;
@@ -119,12 +136,13 @@
             right: 0;
             bottom: 0;
             left: 0;
-            /* лёгкий светлый слой поверх фоновой картинки, чтобы контент читался лучше */
-            background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+            background: url('https://i.pinimg.com/736x/8c/6d/15/8c6d15dde2558efbefd8a4250445c395.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.4;
             z-index: -1;
             border-radius: 20px;
         }
-
+ 
         .hero-content {
             flex: 1;
             background: rgba(255, 255, 255, 0.85);
@@ -133,7 +151,7 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-
+ 
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
@@ -142,16 +160,19 @@
             color: var(--text-color);
             text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
         }
-
+ 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
             color: var(--light-text);
             max-width: 90%;
         }
-
-        .highlight { color: var(--dark-pink); font-weight: 700; }
-
+ 
+        .highlight {
+            color: var(--dark-pink);
+            font-weight: 700;
+        }
+ 
         .btn {
             display: inline-block;
             padding: 16px 40px;
@@ -168,43 +189,58 @@
             margin-right: 15px;
             margin-bottom: 15px;
         }
-
+ 
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255, 77, 141, 0.4);
         }
-
+ 
         .btn-transparent {
             background: transparent;
             border: 2px solid var(--dark-pink);
             color: var(--dark-pink);
             box-shadow: none;
         }
-
-        .btn-transparent:hover { background: rgba(255, 77, 141, 0.1); }
-
+ 
+        .btn-transparent:hover {
+            background: rgba(255, 77, 141, 0.1);
+        }
+ 
         .btn-telegram {
             background: #0088cc;
             display: inline-flex;
             align-items: center;
             justify-content: center;
         }
-
-        .btn-telegram i { margin-right: 10px; font-size: 1.2rem; }
-
-        .hero-stats { display: flex; gap: 30px; margin-top: 40px; }
-
-        .stat-item { display: flex; flex-direction: column; }
-
+ 
+        .btn-telegram i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+ 
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+ 
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+ 
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--dark-pink);
             line-height: 1;
         }
-
-        .stat-label { font-size: 0.9rem; color: var(--light-text); }
-
+ 
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+ 
         /* Image Upload Section */
         .image-upload {
             text-align: center;
@@ -214,7 +250,7 @@
             border-radius: 15px;
             border: 2px dashed var(--dark-pink);
         }
-
+ 
         .image-preview {
             width: 100%;
             max-width: 400px;
@@ -227,14 +263,14 @@
             overflow: hidden;
             background: rgba(255, 255, 255, 0.5);
         }
-
+ 
         .image-preview img {
             max-width: 100%;
             max-height: 100%;
             object-fit: cover;
             border-radius: 10px;
         }
-
+ 
         .upload-btn {
             display: inline-block;
             padding: 12px 25px;
@@ -245,29 +281,47 @@
             margin-top: 10px;
             transition: all 0.3s;
         }
-
-        .upload-btn:hover { background: var(--text-color); }
-
+ 
+        .upload-btn:hover {
+            background: var(--text-color);
+        }
+ 
         /* About Section */
         .about {
             padding: 100px 0;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
             border-radius: 40px;
-            margin: 40px 0;
         }
-
-        .about-content { display: flex; gap: 50px; align-items: center; }
-
-        .about-text { flex: 1; }
-
-        .about-image { flex: 1; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); }
-
-        .about-image img { width: 100%; height: auto; display: block; }
-
+ 
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+ 
+        .about-text {
+            flex: 1;
+        }
+ 
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+ 
         /* Features Section */
-        .features { padding: 100px 0; }
-
+        .features {
+            padding: 100px 0;
+        }
+ 
         .section-title {
             text-align: center;
             font-family: 'Playfair Display', serif;
@@ -275,7 +329,7 @@
             margin-bottom: 20px;
             color: var(--text-color);
         }
-
+ 
         .section-subtitle {
             text-align: center;
             font-size: 1.2rem;
@@ -285,14 +339,14 @@
             margin-left: auto;
             margin-right: auto;
         }
-
+ 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             margin-top: 50px;
         }
-
+ 
         .feature-card {
             background: var(--white);
             border-radius: 20px;
@@ -303,7 +357,7 @@
             position: relative;
             overflow: hidden;
         }
-
+ 
         .feature-card::before {
             content: '';
             position: absolute;
@@ -315,9 +369,12 @@
             z-index: 0;
             opacity: 0.7;
         }
-
-        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); }
-
+ 
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+ 
         .feature-icon {
             width: 80px;
             height: 80px;
@@ -330,10 +387,21 @@
             font-size: 30px;
             color: var(--dark-pink);
         }
-
-        .feature-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--text-color); position: relative; z-index: 1; }
-        .feature-card p { color: var(--light-text); position: relative; z-index: 1; }
-
+ 
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+ 
+        .feature-card p {
+            color: var(--light-text);
+            position: relative;
+            z-index: 1;
+        }
+ 
         /* Benefits Section */
         .benefits {
             padding: 100px 0;
@@ -341,14 +409,14 @@
             backdrop-filter: blur(10px);
             border-radius: 40px;
         }
-
+ 
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             margin-top: 50px;
         }
-
+ 
         .benefit-card {
             background: var(--white);
             border-radius: 20px;
@@ -357,9 +425,12 @@
             transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
         }
-
-        .benefit-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); }
-
+ 
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+ 
         .benefit-icon {
             width: 80px;
             height: 80px;
@@ -372,20 +443,29 @@
             font-size: 30px;
             color: var(--dark-pink);
         }
-
-        .benefit-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--text-color); }
-        .benefit-card p { color: var(--light-text); }
-
+ 
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+ 
+        .benefit-card p {
+            color: var(--light-text);
+        }
+ 
         /* Tariffs Section */
-        .tariffs { padding: 100px 0; }
-
+        .tariffs {
+            padding: 100px 0;
+        }
+ 
         .tariffs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             margin-top: 50px;
         }
-
+ 
         .tariff-card {
             background: var(--white);
             border-radius: 20px;
@@ -396,9 +476,12 @@
             position: relative;
             overflow: hidden;
         }
-
-        .tariff-card.popular { border: 2px solid var(--dark-pink); transform: scale(1.05); }
-
+ 
+        .tariff-card.popular {
+            border: 2px solid var(--dark-pink);
+            transform: scale(1.05);
+        }
+ 
         .tariff-card.popular::before {
             content: 'ПОПУЛЯРНЫЙ';
             position: absolute;
@@ -411,19 +494,55 @@
             font-weight: 600;
             transform: rotate(45deg);
         }
-
-        .tariff-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); }
-        .tariff-card.popular:hover { transform: scale(1.05) translateY(-10px); }
-
-        .tariff-header { margin-bottom: 30px; }
-        .tariff-name { font-size: 1.8rem; margin-bottom: 10px; color: var(--text-color); }
-        .tariff-percent { font-size: 2.5rem; font-weight: 700; color: var(--dark-pink); margin-bottom: 10px; }
-        .tariff-description { color: var(--light-text); margin-bottom: 20px; }
-
-        .tariff-features { list-style: none; margin-bottom: 30px; text-align: left; }
-        .tariff-features li { margin-bottom: 12px; display: flex; align-items: center; }
-        .tariff-features li i { color: var(--dark-pink); margin-right: 10px; }
-
+ 
+        .tariff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .tariff-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+ 
+        .tariff-header {
+            margin-bottom: 30px;
+        }
+ 
+        .tariff-name {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+ 
+        .tariff-percent {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-pink);
+            margin-bottom: 10px;
+        }
+ 
+        .tariff-description {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+ 
+        .tariff-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+ 
+        .tariff-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+ 
+        .tariff-features li i {
+            color: var(--dark-pink);
+            margin-right: 10px;
+        }
+ 
         /* Calculator Section */
         .calculator {
             padding: 100px 0;
@@ -431,7 +550,7 @@
             backdrop-filter: blur(10px);
             border-radius: 40px;
         }
-
+ 
         .calculator-container {
             max-width: 600px;
             margin: 0 auto;
@@ -440,12 +559,20 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
         }
-
-        .calculator-input { margin-bottom: 25px; }
-
-        .calculator-input label { display: block; margin-bottom: 10px; font-weight: 500; color: var(--text-color); }
-
-        .calculator-input input, .calculator-input select {
+ 
+        .calculator-input {
+            margin-bottom: 25px;
+        }
+ 
+        .calculator-input label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+ 
+        .calculator-input input,
+        .calculator-input select {
             width: 100%;
             padding: 15px;
             border: 2px solid var(--light-pink);
@@ -453,9 +580,13 @@
             font-size: 1.1rem;
             transition: border-color 0.3s;
         }
-
-        .calculator-input input:focus, .calculator-input select:focus { border-color: var(--dark-pink); outline: none; }
-
+ 
+        .calculator-input input:focus,
+        .calculator-input select:focus {
+            border-color: var(--dark-pink);
+            outline: none;
+        }
+ 
         .calculator-result {
             background: var(--gradient);
             padding: 25px;
@@ -463,14 +594,30 @@
             text-align: center;
             margin-top: 30px;
         }
-
-        .calculator-result h3 { margin-bottom: 15px; color: var(--text-color); }
-        .result-amount { font-size: 2.2rem; font-weight: 700; color: var(--dark-pink); }
-
+ 
+        .calculator-result h3 {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+ 
+        .result-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark-pink);
+        }
+ 
         /* How it Works */
-        .how-it-works { padding: 100px 0; }
-
-        .steps { display: flex; justify-content: space-between; margin-top: 60px; position: relative; }
+        .how-it-works {
+            padding: 100px 0;
+        }
+ 
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            position: relative;
+        }
+ 
         .steps:before {
             content: '';
             position: absolute;
@@ -481,9 +628,15 @@
             background: var(--light-pink);
             z-index: 1;
         }
-
-        .step { text-align: center; position: relative; z-index: 2; flex: 1; padding: 0 20px; }
-
+ 
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            padding: 0 20px;
+        }
+ 
         .step-number {
             width: 80px;
             height: 80px;
@@ -498,7 +651,7 @@
             margin: 0 auto 25px;
             position: relative;
         }
-
+ 
         .step-number:after {
             content: '';
             position: absolute;
@@ -507,10 +660,17 @@
             border-radius: 50%;
             border: 2px solid var(--light-pink);
         }
-
-        .step h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--text-color); }
-        .step p { color: var(--light-text); }
-
+ 
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+ 
+        .step p {
+            color: var(--light-text);
+        }
+ 
         /* CTA Section */
         .cta {
             background: rgba(255, 255, 255, 0.7);
@@ -520,14 +680,14 @@
             margin: 80px 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
         }
-
+ 
         .cta h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
             margin-bottom: 20px;
             color: var(--text-color);
         }
-
+ 
         .cta p {
             font-size: 1.2rem;
             margin-bottom: 40px;
@@ -536,21 +696,21 @@
             margin-left: auto;
             margin-right: auto;
         }
-
+ 
         /* Footer */
         footer {
             background: rgba(255, 255, 255, 0.8);
             padding: 60px 0 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.5);
         }
-
+ 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
-
+ 
         .footer-column h3 {
             font-size: 1.3rem;
             margin-bottom: 20px;
@@ -558,7 +718,7 @@
             position: relative;
             padding-bottom: 10px;
         }
-
+ 
         .footer-column h3:after {
             content: '';
             position: absolute;
@@ -568,13 +728,31 @@
             height: 2px;
             background: var(--dark-pink);
         }
-
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { text-decoration: none; color: var(--light-text); transition: color 0.3s; }
-        .footer-links a:hover { color: var(--dark-pink); }
-
-        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+ 
+        .footer-links {
+            list-style: none;
+        }
+ 
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+ 
+        .footer-links a {
+            text-decoration: none;
+            color: var(--light-text);
+            transition: color 0.3s;
+        }
+ 
+        .footer-links a:hover {
+            color: var(--dark-pink);
+        }
+ 
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+ 
         .social-icons a {
             width: 40px;
             height: 40px;
@@ -587,8 +765,11 @@
             font-size: 18px;
             transition: transform 0.3s;
         }
-        .social-icons a:hover { transform: translateY(-5px); }
-
+ 
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+ 
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
@@ -596,27 +777,74 @@
             color: var(--light-text);
             font-size: 0.9rem;
         }
-
+ 
         /* Responsive */
         @media (max-width: 992px) {
-            .hero { flex-direction: column; text-align: center; padding: 40px 0; }
-            .hero-content { width: 100%; }
-            .hero p { max-width: 100%; }
-            .hero-stats { justify-content: center; }
-            .steps { flex-direction: column; gap: 40px; }
-            .steps:before { display: none; }
-            .about-content { flex-direction: column; }
-            .tariff-card.popular { transform: scale(1); }
-            .tariff-card.popular:hover { transform: translateY(-10px); }
-            .nav-links { display: none; }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 0;
+            }
+ 
+            .hero-content {
+                width: 100%;
+            }
+ 
+            .hero p {
+                max-width: 100%;
+            }
+ 
+            .hero-stats {
+                justify-content: center;
+            }
+ 
+            .steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+ 
+            .steps:before {
+                display: none;
+            }
+ 
+            .about-content {
+                flex-direction: column;
+            }
+ 
+            .tariff-card.popular {
+                transform: scale(1);
+            }
+ 
+            .tariff-card.popular:hover {
+                transform: translateY(-10px);
+            }
+ 
+            .nav-links {
+                display: none;
+            }
         }
-
+ 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section-title { font-size: 2.2rem; }
-            .stat-value { font-size: 2rem; }
-            .cta { padding: 50px 30px; }
-            .cta h2 { font-size: 2.2rem; }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+ 
+            .section-title {
+                font-size: 2.2rem;
+            }
+ 
+            .stat-value {
+                font-size: 2rem;
+            }
+ 
+            .cta {
+                padding: 50px 30px;
+            }
+ 
+            .cta h2 {
+                font-size: 2.2rem;
+            }
+ 
             .tariff-card.popular::before {
                 top: 15px;
                 right: -30px;
@@ -624,10 +852,16 @@
                 padding: 5px 30px;
             }
         }
-
+ 
         /* Animation */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animated { animation: fadeIn 1s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+ 
+        .animated {
+            animation: fadeIn 1s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -647,7 +881,7 @@
             </div>
         </div>
     </header>
-
+ 
     <section class="hero" id="heroSection">
         <div class="container">
             <div class="hero-content">
@@ -674,7 +908,7 @@
             </div>
         </div>
     </section>
-
+ 
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title">О вебкам студии</h2>
@@ -690,57 +924,69 @@
             </div>
         </div>
     </section>
-
+ 
     <section class="benefits" id="benefits">
         <div class="container">
             <h2 class="section-title">Преимущества работы вебкам моделью удаленно</h2>
             <p class="section-subtitle">Дорожим командой, поэтому заботимся о комфорте и спокойствии каждого</p>
-
+ 
             <div class="benefits-grid">
                 <div class="benefit-card animated">
-                    <div class="benefit-icon"><i class="fas fa-home"></i></div>
+                    <div class="benefit-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
                     <h3>Работа из дома</h3>
                     <p>Работайте из любой точки мира в комфортной обстановке без необходимости арендовать студию или офис</p>
                 </div>
-
+ 
                 <div class="benefit-card animated">
-                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
                     <h3>Высокий доход</h3>
                     <p>Зарабатывайте от 80,000 ₽ в неделю с еженедельными выплатами и прозрачной системой расчета</p>
                 </div>
-
+ 
                 <div class="benefit-card animated">
-                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
                     <h3>Полная анонимность</h3>
                     <p>Мы гарантируем конфиденциальность и защиту ваших персональных данных</p>
                 </div>
-
+ 
                 <div class="benefit-card animated">
-                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
                     <h3>Гибкий график</h3>
                     <p>Самостоятельно планируйте рабочее время и продолжительность стримов</p>
                 </div>
-
+ 
                 <div class="benefit-card animated">
-                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <h3>Поддержка 24/7</h3>
                     <p>Круглосуточная помощь менеджеров, техническая поддержка и модерация чатов</p>
                 </div>
-
+ 
                 <div class="benefit-card animated">
-                    <div class="benefit-icon"><i class="fas fa-gem"></i></div>
+                    <div class="benefit-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
                     <h3>Обучение и развитие</h3>
                     <p>Бесплатное обучение, персональный коучинг и помощь в профессиональном росте</p>
                 </div>
             </div>
         </div>
     </section>
-
+ 
     <section class="tariffs" id="tariffs">
         <div class="container">
             <h2 class="section-title">Наши тарифы</h2>
             <p class="section-subtitle">Выберите подходящий вариант сотрудничества и начните зарабатывать уже сегодня</p>
-
+ 
             <div class="tariffs-grid">
                 <div class="tariff-card animated">
                     <div class="tariff-header">
@@ -757,7 +1003,7 @@
                     </ul>
                     <a href="https://t.me/stripup_support" class="btn">Выбрать тариф</a>
                 </div>
-
+ 
                 <div class="tariff-card popular animated">
                     <div class="tariff-header">
                         <h3 class="tariff-name">КОУЧ ПЛЮС</h3>
@@ -774,7 +1020,7 @@
                     </ul>
                     <a href="https://t.me/stripup_support" class="btn">Выбрать тариф</a>
                 </div>
-
+ 
                 <div class="tariff-card animated">
                     <div class="tariff-header">
                         <h3 class="tariff-name">ЛИЧНЫЙ ОПЕРАТОР</h3>
@@ -795,23 +1041,23 @@
             </div>
         </div>
     </section>
-
+ 
     <section class="calculator">
         <div class="container">
             <h2 class="section-title">Калькулятор заработка</h2>
             <p class="section-subtitle">Рассчитайте ваш потенциальный недельный доход в рублях с учетом выбранного тарифа</p>
-
+ 
             <div class="calculator-container">
                 <div class="calculator-input">
                     <label for="hours">Сколько часов в неделю планируете работать:</label>
                     <input type="number" id="hours" min="0" value="20" oninput="calculateIncome()">
                 </div>
-
+ 
                 <div class="calculator-input">
                     <label for="hourlyRate">Ожидаемый часовой заработок (руб):</label>
                     <input type="number" id="hourlyRate" min="0" value="2000" oninput="calculateIncome()">
                 </div>
-
+ 
                 <div class="calculator-input">
                     <label for="tariff">Выберите тариф:</label>
                     <select id="tariff" onchange="calculateIncome()">
@@ -820,7 +1066,7 @@
                         <option value="0.4">Личный оператор (40% комиссия)</option>
                     </select>
                 </div>
-
+ 
                 <div class="calculator-result">
                     <h3>Ваш заработок в неделю после комиссии:</h3>
                     <div class="result-amount" id="result">28 000 ₽</div>
@@ -828,25 +1074,25 @@
             </div>
         </div>
     </section>
-
+ 
     <section class="how-it-works">
         <div class="container">
             <h2 class="section-title">Как начать работать?</h2>
             <p class="section-subtitle">Всего 3 простых шага отделяют тебя от начала карьеры</p>
-
+ 
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Напиши в Telegram</h3>
                     <p>Свяжись с нами через Telegram для консультации и выбора тарифа</p>
                 </div>
-
+ 
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Пройти обучение</h3>
                     <p>Мы проведем бесплатное обучение и поможем настроить оборудование</p>
                 </div>
-
+ 
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Начать работать</h3>
@@ -855,7 +1101,7 @@
             </div>
         </div>
     </section>
-
+ 
     <section class="cta">
         <div class="container">
             <h2>Готовы изменить свою жизнь?</h2>
@@ -863,7 +1109,7 @@
             <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Присоединиться сейчас</a>
         </div>
     </section>
-
+ 
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -874,7 +1120,7 @@
                         <a href="https://t.me/stripup_support"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
-
+ 
                 <div class="footer-column">
                     <h3>Навигация</h3>
                     <ul class="footer-links">
@@ -884,7 +1130,7 @@
                         <li><a href="#benefits">Преимущества</a></li>
                     </ul>
                 </div>
-
+ 
                 <div class="footer-column">
                     <h3>Контакты</h3>
                     <ul class="footer-links">
@@ -893,13 +1139,13 @@
                     </ul>
                 </div>
             </div>
-
+ 
             <div class="footer-bottom">
                 <p>© 2025 StripUp. Все права защищены. | Политика конфиденциальности</p>
             </div>
         </div>
     </footer>
-
+ 
     <script>
         // Калькулятор дохода
         function calculateIncome() {
@@ -907,19 +1153,26 @@
             const hourlyRate = parseInt(document.getElementById('hourlyRate').value) || 0;
             const tariff = parseFloat(document.getElementById('tariff').value);
             const result = (hours * hourlyRate) * (1 - tariff);
-
+ 
             document.getElementById('result').textContent = result.toLocaleString('ru-RU') + ' ₽';
         }
-
+ 
         // Прокрутка к началу при клике на логотип
         document.getElementById('logoLink').addEventListener('click', function(e) {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
-
+ 
         // Анимация появления элементов при прокрутке
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+ 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -928,25 +1181,30 @@
                 }
             });
         }, observerOptions);
-
+ 
         // Наблюдаем за карточками
         document.querySelectorAll('.feature-card, .benefit-card, .tariff-card').forEach(card => {
             observer.observe(card);
         });
-
+ 
         // Плавная прокрутка для навигации
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+ 
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
+ 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
-
+ 
         // Инициализация калькулятора при загрузке
         document.addEventListener('DOMContentLoaded', function() {
             calculateIncome();
