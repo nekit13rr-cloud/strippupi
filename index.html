@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Весь твой CSS отсюда */
         :root {
             --primary-pink: #ff9bb9;
             --light-pink: #ffd1dc;
@@ -18,14 +17,622 @@
             --white: #ffffff;
             --gradient: linear-gradient(135deg, var(--light-pink) 0%, var(--peach) 100%);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--text-color); line-height: 1.6; background: var(--gradient); overflow-x: hidden; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        /* ... (весь остальной CSS из твоего кода) ... */
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: var(--gradient);
+            overflow-x: hidden;
+        }
+ 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+ 
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+ 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+ 
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-pink);
+            display: flex;
+            align-items: center;
+        }
+ 
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+ 
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+ 
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+ 
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dark-pink);
+            transition: width 0.3s;
+        }
+ 
+        .nav-links a:hover {
+            color: var(--dark-pink);
+        }
+ 
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+ 
+        .header-btn {
+            padding: 12px 25px;
+            background: var(--dark-pink);
+            color: var(--white);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
+        }
+ 
+        .header-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 77, 141, 0.4);
+        }
+ 
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 90vh;
+            padding: 60px 0;
+            gap: 50px;
+            position: relative;
+        }
+ 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 20px;
+        }
+ 
+        .hero-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--text-color);
+        }
+ 
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--light-text);
+            max-width: 90%;
+        }
+ 
+        .highlight {
+            color: var(--dark-pink);
+            font-weight: 700;
+        }
+ 
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--dark-pink);
+            color: var(--white);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
+            border: none;
+            cursor: pointer;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+ 
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 77, 141, 0.4);
+        }
+ 
+        .btn-transparent {
+            background: transparent;
+            border: 2px solid var(--dark-pink);
+            color: var(--dark-pink);
+            box-shadow: none;
+        }
+ 
+        .btn-transparent:hover {
+            background: rgba(255, 77, 141, 0.1);
+        }
+ 
+        .btn-telegram {
+            background: #0088cc;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+ 
+        .btn-telegram i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+ 
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+ 
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+ 
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-pink);
+            line-height: 1;
+        }
+ 
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+ 
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            margin: 40px 0;
+        }
+ 
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+ 
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+ 
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+ 
+        .feature-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+ 
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: var(--gradient);
+            z-index: 0;
+            opacity: 0.7;
+        }
+ 
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-pink);
+            font-weight: 500;
+            z-index: 1;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+ 
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+ 
+        .feature-image:hover img {
+            transform: scale(1.1);
+        }
+ 
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+ 
+        .feature-card p {
+            color: var(--light-text);
+            position: relative;
+            z-index: 1;
+        }
+ 
+        /* How it Works */
+        .how-it-works {
+            padding: 100px 0;
+        }
+ 
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            position: relative;
+        }
+ 
+        .steps:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--light-pink);
+            z-index: 1;
+        }
+ 
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            padding: 0 20px;
+        }
+ 
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--dark-pink);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            position: relative;
+        }
+ 
+        .step-number:after {
+            content: '';
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid var(--light-pink);
+        }
+ 
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+ 
+        .step p {
+            color: var(--light-text);
+        }
+ 
+        /* CTA Section */
+        .cta {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+            padding: 80px 60px;
+            text-align: center;
+            margin: 80px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+ 
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+ 
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+ 
+        /* Telegram Section */
+        .telegram-section {
+            padding: 100px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 40px;
+        }
+ 
+        .telegram-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+ 
+        .telegram-icon {
+            font-size: 4rem;
+            color: #0088cc;
+            margin-bottom: 20px;
+        }
+ 
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+        }
+ 
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+ 
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+ 
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--dark-pink);
+        }
+ 
+        .footer-links {
+            list-style: none;
+        }
+ 
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+ 
+        .footer-links a {
+            text-decoration: none;
+            color: var(--light-text);
+            transition: color 0.3s;
+        }
+ 
+        .footer-links a:hover {
+            color: var(--dark-pink);
+        }
+ 
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+ 
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-pink);
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+ 
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+ 
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+ 
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+ 
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+ 
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark-pink);
+        }
+ 
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 0;
+            }
+ 
+            .hero-content {
+                width: 100%;
+            }
+ 
+            .hero p {
+                max-width: 100%;
+            }
+ 
+            .hero-stats {
+                justify-content: center;
+            }
+ 
+            .steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+ 
+            .steps:before {
+                display: none;
+            }
+ 
+            .nav-links {
+                display: none;
+            }
+        }
+ 
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+ 
+            .section-title {
+                font-size: 2.2rem;
+            }
+ 
+            .stat-value {
+                font-size: 2rem;
+            }
+ 
+            .cta {
+                padding: 50px 30px;
+            }
+ 
+            .cta h2 {
+                font-size: 2.2rem;
+            }
+        }
+ 
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+ 
+        .animated {
+            animation: fadeIn 1s ease-out;
+        }
     </style>
 </head>
 <body>
-    <!-- Весь HTML-контент, который ты отправлял -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -41,17 +648,198 @@
             </div>
         </div>
     </header>
-
-    <!-- (оставляешь все секции hero, features, how-it-works, cta, footer и модалки — как в твоём коде) -->
-
+ 
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Раскрой свой потенциал и начни зарабатывать!</h1>
+                <p>Присоединяйся к дружной студии StripUp. Стабильные выплаты, поддержка 24/7 и комфортная работа из любой точки мира.</p>
+                <div class="hero-buttons">
+                    <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Написать в Telegram</a>
+                    <a href="#features" class="btn btn-transparent">Узнать больше</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">1500$</span>
+                        <span class="stat-label">средний доход</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">поддержка</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">500+</span>
+                        <span class="stat-label">моделей</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас?</h2>
+            <p class="section-subtitle">Мы создали все условия для вашего комфорта и успешной работы</p>
+ 
+            <div class="features-grid">
+                <div class="feature-card animated">
+                    <div class="feature-image" onclick="openModal('highIncomeModal')">
+                        <img src="https://i.pinimg.com/736x/3a/80/1c/3a801c4d26bf8b4d894a6fc00b71c383.jpg" alt="Высокий доход">
+                    </div>
+                    <h3>Высокий доход</h3>
+                    <p>Зарабатывай от 1500$ в неделю. Стабильные выплаты и лучшие условия в индустрии.</p>
+                    <a href="https://t.me/stripup_support" class="btn">Узнать в Telegram</a>
+                </div>
+ 
+                <div class="feature-card animated">
+                    <div class="feature-image" onclick="openModal('flexibleScheduleModal')">
+                        <img src="https://i.pinimg.com/736x/2c/8b/ce/2c8bce0f9f7e4c6e431b6e2185fae7f7.jpg" alt="Гибкий график">
+                    </div>
+                    <h3>Гибкий график</h3>
+                    <p>Работай когда угодно и из любой точки мира. Ты сама выбираешь удобное время.</p>
+                    <a href="https://t.me/stripup_support" class="btn">Узнать в Telegram</a>
+                </div>
+ 
+                <div class="feature-card animated">
+                    <div class="feature-image" onclick="openModal('safetyModal')">
+                        <img src="https://i.pinimg.com/736x/3c/ec/3d/3cec3d64aaffa7d72cbfc53b3c5e310e.jpg" alt="Безопасность">
+                    </div>
+                    <h3>Безопасность</h3>
+                    <p>Полная анонимность и конфиденциальность. Мы заботимся о вашей приватности.</p>
+                    <a href="https://t.me/stripup_support" class="btn">Узнать в Telegram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как начать работать?</h2>
+            <p class="section-subtitle">Всего 3 простых шага отделяют тебя от начала карьеры</p>
+ 
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Напиши в Telegram</h3>
+                    <p>Свяжись с нами через Telegram для консультации</p>
+                </div>
+ 
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Пройти обучение</h3>
+                    <p>Мы проведем бесплатное обучение и поможем настроить оборудование</p>
+                </div>
+ 
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Начать работать</h3>
+                    <p>После обучения ты сможешь сразу приступить к работе и получать доход</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="telegram-section">
+        <div class="container">
+            <div class="telegram-container">
+                <div class="telegram-icon">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <h2 class="section-title">Свяжись с нами в Telegram</h2>
+                <p class="section-subtitle">Мы ответим на все вопросы и поможем начать карьеру</p>
+                <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> @stripup_support</a>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="cta">
+        <div class="container">
+            <h2>Готовы изменить свою жизнь?</h2>
+            <p>Присоединяйтесь к нашей дружной команде прямо сейчас и начните зарабатывать уже сегодня!</p>
+            <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Присоединиться сейчас</a>
+        </div>
+    </section>
+ 
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>StripUp</h3>
+                    <p>Современная вебкам-студия с лучшими условиями для работы и развития</p>
+                    <div class="social-icons">
+                        <a href="https://t.me/stripup_support"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+ 
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Условия</a></li>
+                    </ul>
+                </div>
+            </div>
+ 
+            <div class="footer-bottom">
+                <p>© 2025 StripUp. Все права защищены. | Политика конфиденциальности</p>
+                <p>Связь только через Telegram: <a href="https://t.me/stripup_support" style="color: var(--dark-pink);">@stripup_support</a></p>
+            </div>
+        </div>
+    </footer>
+ 
+    <!-- Модальные окна -->
+    <div id="highIncomeModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('highIncomeModal')">&times;</span>
+            <h2>Высокий доход</h2>
+            <p>Наши модели зарабатывают от 1500$ в неделю. Мы предлагаем одни из лучших условий в индустрии и стабильные ежедневные выплаты.</p>
+            <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Узнать подробности</a>
+        </div>
+    </div>
+ 
+    <div id="flexibleScheduleModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('flexibleScheduleModal')">&times;</span>
+            <h2>Гибкий график</h2>
+            <p>Работай когда угодно и из любой точки мира. Ты сама выбираешь удобное время. Мы не навязываем график и уважаем твое личное время.</p>
+            <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Узнать подробности</a>
+        </div>
+    </div>
+ 
+    <div id="safetyModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('safetyModal')">&times;</span>
+            <h2>Безопасность</h2>
+            <p>Мы гарантируем полную анонимность и конфиденциальность. Все ваши данные защищены, и мы заботимся о вашей приватности.</p>
+            <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Узнать подробности</a>
+        </div>
+    </div>
+ 
     <script>
-        // Весь твой JavaScript отсюда
-        function openModal(modalId) { document.getElementById(modalId).style.display = 'flex'; }
-        function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
+        // Функции для модальных окон
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+ 
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+ 
+        // Закрытие модального окна при клике вне его
         window.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) { event.target.style.display = 'none'; }
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
         });
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+ 
+        // Анимация появления элементов при прокрутке
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+ 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -60,7 +848,11 @@
                 }
             });
         }, observerOptions);
-        document.querySelectorAll('.feature-card').forEach(card => { observer.observe(card); });
+ 
+        // Наблюдаем за карточками особенностей
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
     </script>
 </body>
 </html>
