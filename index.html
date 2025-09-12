@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StripUp - Вебкам Студия</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-crown"></i> StripUp
+        </div>
+        <nav class="nav-links" id="navLinks">
+          <a href="#">Главная</a>
+          <a href="#about">О нас</a>
+          <a href="#features">Условия</a>
+        </nav>
+        <a href="https://t.me/stripup_support" class="header-btn">Написать в Telegram</a>
+
+        <div class="burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Раскрой свой потенциал и начни зарабатывать!</h1>
+        <p>Присоединяйся к дружной студии StripUp. Стабильные выплаты, поддержка 24/7 и комфортная работа из любой точки мира.</p>
+        <div class="hero-buttons">
+          <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Написать в Telegram</a>
+          <a href="#features" class="btn btn-transparent">Узнать больше</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">1500$</span>
+            <span class="stat-label">средний доход</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">24/7</span>
+            <span class="stat-label">поддержка</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">500+</span>
+            <span class="stat-label">моделей</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">Почему выбирают нас?</h2>
+      <p class="section-subtitle">Мы создали все условия для вашего комфорта и успешной работы</p>
+
+      <div class="features-grid">
+        <div class="feature-card animated">
+          <div class="feature-image" onclick="openModal('highIncomeModal')">
+            <img src="https://i.pinimg.com/736x/3a/80/1c/3a801c4d26bf8b4d894a6fc00b71c383.jpg" alt="Высокий доход">
+          </div>
+          <h3>Высокий доход</h3>
+          <p>Зарабатывай от 1500$ в неделю. Стабильные выплаты и лучшие условия в индустрии.</p>
+          <a href="https://t.me/stripup_support" class="btn">Узнать в Telegram</a>
+        </div>
+
+        <div class="feature-card animated">
+          <div class="feature-image" onclick="openModal('flexibleScheduleModal')">
+            <img src="https://i.pinimg.com/736x/2c/8b/ce/2c8bce0f9f7e4c6e431b6e2185fae7f7.jpg" alt="Гибкий график">
+          </div>
+          <h3>Гибкий график</h3>
+          <p>Работай когда угодно и из любой точки мира. Ты сама выбираешь удобное время.</p>
+          <a href="https://t.me/stripup_support" class="btn">Узнать в Telegram</a>
+        </div>
+
+        <div class="feature-card animated">
+          <div class="feature-image" onclick="openModal('safetyModal')">
+            <img src="https://i.pinimg.com/736x/3c/ec/3d/3cec3d64aaffa7d72cbfc53b3c5e310e.jpg" alt="Безопасность">
+          </div>
+          <h3>Безопасность</h3>
+          <p>Полная анонимность и конфиденциальность. Мы заботимся о вашей приватности.</p>
+          <a href="https://t.me/stripup_support" class="btn">Узнать в Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">Как начать работать?</h2>
+      <p class="section-subtitle">Всего 3 простых шага отделяют тебя от начала карьеры</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Напиши в Telegram</h3>
+          <p>Свяжись с нами через Telegram для консультации</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Пройти обучение</h3>
+          <p>Мы проведем бесплатное обучение и поможем настроить оборудование</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Начать работать</h3>
+          <p>После обучения ты сможешь сразу приступить к работе и получать доход</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="telegram-section">
+    <div class="container">
+      <div class="telegram-container">
+        <div class="telegram-icon">
+          <i class="fab fa-telegram"></i>
+        </div>
+        <h2 class="section-title">Свяжись с нами в Telegram</h2>
+        <p class="section-subtitle">Мы ответим на все вопросы и поможем начать карьеру</p>
+        <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> @stripup_support</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Готовы изменить свою жизнь?</h2>
+      <p>Присоединяйтесь к нашей дружной команде прямо сейчас и начните зарабатывать уже сегодня!</p>
+      <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Присоединиться сейчас</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>StripUp</h3>
+          <p>Современная вебкам-студия с лучшими условиями для работы и развития</p>
+          <div class="social-icons">
+            <a href="https://t.me/stripup_support"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Навигация</h3>
+          <ul class="footer-links">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#features">Условия</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 StripUp. Все права защищены. | Политика конфиденциальности</p>
+        <p>Связь только через Telegram: <a href="https://t.me/stripup_support" style="color: var(--dark-pink);">@stripup_support</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="highIncomeModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('highIncomeModal')">&times;</span>
+      <h2>Высокий доход</h2>
+      <p>Наши модели зарабатывают от 1500$ в неделю. Мы предлагаем одни из лучших условий в индустрии и стабильные ежедневные выплаты.</p>
+      <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Узнать подробности</a>
+    </div>
+  </div>
+
+  <div id="flexibleScheduleModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('flexibleScheduleModal')">&times;</span>
+      <h2>Гибкий график</h2>
+      <p>Работай когда угодно и из любой точки мира. Ты сама выбираешь удобное время. Мы не навязываем график и уважаем твое личное время.</p>
+      <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Узнать подробности</a>
+    </div>
+  </div>
+
+  <div id="safetyModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('safetyModal')">&times;</span>
+      <h2>Безопасность</h2>
+      <p>Мы гарантируем полную анонимность и конфиденциальность. Все ваши данные защищены, и мы заботимся о вашей приватности.</p>
+      <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Узнать подробности</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
