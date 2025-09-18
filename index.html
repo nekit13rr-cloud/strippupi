@@ -5,22 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>StripUp - Вебкам Студия</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Шрифты Inter (для текста) и Playfair Display (для заголовков) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
       --primary-pink: #ff9bb9;
       --light-pink: #ffd1dc;
       --peach: #ffcc99;
       --dark-pink: #ff4d8d;
-      --text-color: #5a3d5c;
-      --light-text: #7a5c7d;
+      --text-color: #3a2d3d;
+      --light-text: #6a4c6f;
       --white: #ffffff;
       --gradient: linear-gradient(135deg, var(--light-pink) 0%, var(--peach) 100%);
     }
 
     *{margin:0;padding:0;box-sizing:border-box;}
     body{
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
       color:var(--text-color);
       line-height:1.6;
       background: var(--gradient);
@@ -31,28 +32,20 @@
     /* Header */
     header {
       padding: 15px 30px;
-      background: rgba(255, 255, 255, 0.12); /* лёгкая прозрачность */
-      backdrop-filter: blur(12px);            /* стеклянный эффект */
-      -webkit-backdrop-filter: blur(12px);    /* поддержка Safari */
-      border-radius: 16px;                    /* скруглённые углы */
-      position: fixed;                        /* фиксируем сверху */
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 16px;
+      position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
       max-width: 1200px;
       z-index: 1000;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* мягкая тень */
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
-
-    /* добавленные стили для корректного отображения шапки */
-    .header-content{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-    }
-
+    .header-content{display:flex;justify-content:space-between;align-items:center;gap:16px;}
     .logo{
       font-family:'Playfair Display', serif;
       font-size:28px;
@@ -64,19 +57,13 @@
       text-decoration:none;
     }
     .logo i{margin-right:10px;font-size:26px;color:var(--dark-pink);}
-
-    .nav-links{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-
+    .nav-links{display:flex;gap:12px;align-items:center;}
     .nav-links a {
       display:inline-block;
       padding: 8px 16px;
       border-radius: 12px;
       font-weight: 600;
-      color: #fff; /* белые ссылки поверх картинок */
+      color: #fff;
       background-size: cover;
       background-position: center;
       transition: all 0.3s ease;
@@ -86,26 +73,11 @@
       text-align: center;
       font-size: 0.95rem;
     }
-
-    /* фоны для пунктов меню (ты просил фоны у каждой кнопки) */
-    .nav-links a:nth-child(1) {
-      background-image: url("https://i.imgur.com/YuKQ9vS.jpg");
-    }
-    .nav-links a:nth-child(2) {
-      background-image: url("https://i.imgur.com/zkx2Azb.jpeg");
-    }
-    .nav-links a:nth-child(3) {
-      background-image: url("https://i.imgur.com/sv6RVRL.jpeg");
-    }
-    .nav-links a:nth-child(4) {
-      background-image: url("https://i.imgur.com/4AiXzf8.jpeg");
-    }
-
-    .nav-links a:hover {
-      filter: brightness(1.2);
-      transform: translateY(-2px);
-    }
-
+    .nav-links a:nth-child(1){background-image: url("https://i.imgur.com/YuKQ9vS.jpg");}
+    .nav-links a:nth-child(2){background-image: url("https://i.imgur.com/zkx2Azb.jpeg");}
+    .nav-links a:nth-child(3){background-image: url("https://i.imgur.com/sv6RVRL.jpeg");}
+    .nav-links a:nth-child(4){background-image: url("https://i.imgur.com/4AiXzf8.jpeg");}
+    .nav-links a:hover{filter: brightness(1.2);transform: translateY(-2px);}
     .header-btn{
       padding:12px 25px;
       background:var(--dark-pink);
@@ -121,9 +93,8 @@
     }
     .header-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(255,77,141,0.4);}
 
-    /* Hero Section */
+    /* Hero */
     .hero{display:flex;align-items:center;min-height:90vh;padding:60px 0;gap:50px;position:relative;overflow:hidden;margin-top:30px;}
-    /* big hero background image (with overlay for readable text) */
     .hero::before{
       content:'';
       position:absolute;
@@ -151,70 +122,26 @@
     .stat-value{font-size:2.2rem;font-weight:700;color:var(--dark-pink);}
     .stat-label{font-size:.95rem;color:var(--light-text);}
 
-    /* Image Upload Section */
-    .image-upload{text-align:center;margin:20px 0;padding:20px;background:rgba(255,255,255,0.5);border-radius:15px;border:2px dashed var(--dark-pink);}
-    .image-preview{width:100%;max-width:400px;height:250px;border-radius:15px;margin:15px auto;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(255,255,255,0.5);}
-    .image-preview img{max-width:100%;max-height:100%;object-fit:cover;border-radius:10px;}
-    .upload-btn{display:inline-block;padding:12px 25px;background:var(--dark-pink);color:var(--white);border-radius:5px;cursor:pointer;margin-top:10px;transition:all .3s;}
-    .upload-btn:hover{background:var(--text-color);}
-
-    /* About Section */
-    .about{padding:100px 0;background: rgba(255,255,255,0.6);backdrop-filter: blur(8px);border-radius:20px;margin-top:30px;}
+    /* Sections */
+    .about,.calculator{padding:100px 0;background: rgba(255,255,255,0.6);backdrop-filter: blur(8px);border-radius:20px;margin-top:30px;}
     .about-content{display:flex;gap:40px;align-items:center;flex-wrap:wrap;}
     .about-text{flex:1;min-width:300px;}
-    .about-image{flex:1;min-width:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,0.1);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));}
-    .about-image img{width:100%;height:100%;display:block;object-fit:cover;}
+    .about-image{flex:1;min-width:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,0.1);}
+    .about-image img{width:100%;height:100%;object-fit:cover;}
 
-    /* Features / Benefits */
-    .features{padding:60px 0;}
     .section-title{text-align:center;font-family:'Playfair Display', serif;font-size:2.6rem;margin-bottom:20px;color:var(--text-color);}
     .section-subtitle{text-align:center;font-size:1.05rem;margin-bottom:40px;color:var(--light-text);max-width:700px;margin:0 auto;}
+
     .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:30px;}
-    .feature-card, .benefit-card, .tariff-card{background:var(--white);border-radius:16px;padding:30px;box-shadow:0 10px 30px rgba(0,0,0,0.07);transition:transform .3s,box-shadow .3s;overflow:hidden;position:relative;}
-    .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:var(--gradient);z-index:0;opacity:0.65;}
-    .feature-card:hover, .benefit-card:hover, .tariff-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,0.12);}
-    .feature-icon, .benefit-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;background-size:cover;background-position:center;position:relative;z-index:1;overflow:hidden;border:3px solid rgba(255,255,255,0.6);}
-    .feature-icon i, .benefit-icon i{font-size:26px;color:var(--dark-pink);}
-    .feature-card h3, .benefit-card h3, .tariff-card h3{font-size:1.25rem;margin-bottom:12px;color:var(--text-color);position:relative;z-index:1;}
-    .feature-card p, .benefit-card p, .tariff-card p{color:var(--light-text);position:relative;z-index:1;}
-
-    /* Tariffs */
-    .tariffs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:30px;}
-    .tariff-card.popular{border:2px solid var(--dark-pink);transform:scale(1.03);}
-    .tariff-card.popular::before{content:'ПОПУЛЯРНЫЙ';position:absolute;top:18px;right:-35px;background:var(--dark-pink);color:white;padding:6px 36px;font-size:.8rem;font-weight:700;transform:rotate(45deg);z-index:2;}
-    .tariff-header{margin-bottom:18px;}
-    .tariff-name{font-size:1.5rem;margin-bottom:6px;color:var(--text-color);}
-    .tariff-percent{font-size:2.2rem;font-weight:700;color:var(--dark-pink);margin-bottom:8px;}
-    .tariff-description{color:var(--light-text);margin-bottom:12px;}
-    .tariff-features{list-style:none;margin-bottom:18px;padding-left:0;text-align:left;}
-    .tariff-features li{margin-bottom:10px;display:flex;align-items:center;}
-    .tariff-features li i{color:var(--dark-pink);margin-right:8px;}
-
-    /* Calculator */
-    .calculator{padding:100px 0;background: rgba(255,255,255,0.6);backdrop-filter: blur(8px);border-radius:20px;margin-top:30px;}
-    .calculator-container{max-width:600px;margin:0 auto;background:var(--white);padding:30px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.07);}
-    .calculator-input{margin-bottom:18px;}
-    .calculator-input label{display:block;margin-bottom:8px;font-weight:500;color:var(--text-color);}
-    .calculator-input input, .calculator-input select{width:100%;padding:12px;border:2px solid var(--light-pink);border-radius:10px;font-size:1.05rem;}
-    .calculator-input input:focus, .calculator-input select:focus{border-color:var(--dark-pink);outline:none;}
-    .calculator-result{background:var(--gradient);padding:18px;border-radius:10px;text-align:center;margin-top:16px;}
-    .calculator-result h3{margin-bottom:10px;color:var(--text-color);}
-    .result-amount{font-size:1.6rem;font-weight:700;color:var(--dark-pink);}
-
-    /* How it works */
-    .how-it-works{padding:60px 0;}
-    .steps{display:flex;justify-content:space-between;margin-top:30px;position:relative;gap:20px;}
-    .steps:before{content:'';position:absolute;top:32px;left:0;right:0;height:3px;background:var(--light-pink);z-index:1;}
-    .step{text-align:center;position:relative;z-index:2;flex:1;padding:0 12px;}
-    .step-number{width:72px;height:72px;background:var(--dark-pink);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;margin:0 auto 14px;position:relative;}
-    .step-number:after{content:'';position:absolute;width:82px;height:82px;border-radius:50%;border:2px solid var(--light-pink);top:-5px;left:-5px;}
-    .step h3{font-size:1.15rem;margin-bottom:10px;color:var(--text-color);}
-    .step p{color:var(--light-text);}
+    .feature-card,.benefit-card,.tariff-card{background:var(--white);border-radius:16px;padding:30px;box-shadow:0 10px 30px rgba(0,0,0,0.07);transition:transform .3s,box-shadow .3s;}
+    .feature-card:hover,.benefit-card:hover,.tariff-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,0.12);}
+    .feature-card h3,.benefit-card h3,.tariff-card h3{font-size:1.25rem;margin-bottom:12px;color:var(--text-color);}
+    .feature-card p,.benefit-card p,.tariff-card p{color:var(--light-text);}
 
     /* CTA */
-    .cta{background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6)), url('https://i.imgur.com/bwEtE25.jpeg') no-repeat center center; background-size:cover; border-radius:18px; padding:56px 40px; text-align:center; margin:60px 0; box-shadow:0 10px 30px rgba(0,0,0,0.07); position:relative; overflow:hidden;}
+    .cta{background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6)), url('https://i.imgur.com/bwEtE25.jpeg') no-repeat center center; background-size:cover; border-radius:18px; padding:56px 40px; text-align:center; margin:60px 0; box-shadow:0 10px 30px rgba(0,0,0,0.07);}
     .cta h2{font-family:'Playfair Display', serif;font-size:2.4rem;margin-bottom:12px;color:var(--text-color);}
-    .cta p{font-size:1.05rem;margin-bottom:20px;color:var(--light-text);max-width:700px;margin-left:auto;margin-right:auto;}
+    .cta p{font-size:1.05rem;margin-bottom:20px;color:var(--light-text);max-width:700px;margin:auto;}
 
     /* Footer */
     footer{background: rgba(255,255,255,0.9);padding:40px 0 20px;border-top:1px solid rgba(255,255,255,0.6);}
@@ -235,10 +162,8 @@
       .hero{flex-direction:column;text-align:center;padding:40px 0;}
       .hero-content{width:100%;}
       .hero-stats{justify-content:center;}
-      .steps{flex-direction:column;gap:30px;}
-      .steps:before{display:none;}
       .about-content{flex-direction:column;}
-      .nav-links{display:none;} /* при маленьком экране можно показать бургера — пока скрываю */
+      .nav-links{display:none;}
     }
     @media (max-width:768px){
       .hero h1{font-size:2.1rem;}
@@ -246,63 +171,49 @@
       .stat-value{font-size:1.6rem;}
       .cta{padding:36px 20px;}
       .cta h2{font-size:1.6rem;}
-      .tariff-card.popular::before{top:12px;right:-28px;font-size:0.7rem;padding:5px 28px;}
     }
 
-    /* Animation */
     @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
     .animated{animation:fadeIn 0.9s ease-out;}
   </style>
 </head>
 <body>
+  <!-- ======= HEADER ======= -->
   <header>
     <div class="container">
       <div class="header-content">
-        <a href="#" class="logo" id="logoLink">
-          <i class="fas fa-crown" id="logoIcon"></i> StripUp
-        </a>
-
+        <a href="#" class="logo" id="logoLink"><i class="fas fa-crown"></i> StripUp</a>
         <div class="nav-links">
           <a href="#">Главная</a>
           <a href="#about">О нас</a>
           <a href="#tariffs">Тарифы</a>
           <a href="#benefits">Преимущества</a>
         </div>
-
         <a href="https://t.me/stripup_support" class="header-btn">Написать в Telegram</a>
       </div>
     </div>
   </header>
 
+  <!-- ======= HERO ======= -->
   <section class="hero" id="heroSection">
     <div class="container">
       <div class="hero-content">
         <h1>Раскрой свой потенциал и начни зарабатывать!</h1>
         <p>Стать частью команды, где бы вы ни находились. Гармоничная, прибыльная и стабильная работа в вебкаме на дому для девушек и парней в онлайн-формате.</p>
-
         <div class="hero-buttons">
           <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Написать в Telegram</a>
           <a href="#tariffs" class="btn btn-transparent">Выбрать тариф</a>
         </div>
-
         <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-value">120,000 ₽</span>
-            <span class="stat-label">средний доход</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">24/7</span>
-            <span class="stat-label">поддержка</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">500+</span>
-            <span class="stat-label">моделей</span>
-          </div>
+          <div class="stat-item"><span class="stat-value">120,000 ₽</span><span class="stat-label">средний доход</span></div>
+          <div class="stat-item"><span class="stat-value">24/7</span><span class="stat-label">поддержка</span></div>
+          <div class="stat-item"><span class="stat-value">500+</span><span class="stat-label">моделей</span></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ======= ABOUT ======= -->
   <section class="about" id="about">
     <div class="container">
       <h2 class="section-title">О вебкам студии</h2>
@@ -310,204 +221,33 @@
         <div class="about-text">
           <p><strong>StripUp — ЛУЧШАЯ СТРИМИНГ-СТУДИЯ РОССИИ* С ЭКОЛОГИЧНЫМ ПОДХОДОМ</strong></p>
           <p>Мы открыли принципиально новое направление онлайн-работы в вебкаме на дому. «StripUp» призван давать еще больший комфорт и свободу. Теперь не нужно ездить в офис — он там, где вы.</p>
-          <p>Каждый в команде — особенный. Мы заботимся о защищенности наших моделей, их настроении и реализации. Дорожим командой, поэтому заботимся о комфорте и спокойствии каждого. Приветствуем как девушек, так и парней!</p>
+          <p>Каждый в команде — особенный. Мы заботимся о защищенности наших моделей, их настроении и реализации. Приветствуем как девушек, так и парней!</p>
         </div>
-
         <div class="about-image">
-          <!-- About image (anime girl art) -->
           <img src="https://i.imgur.com/bwEtE25.jpeg" alt="Аниме иллюстрация">
         </div>
       </div>
     </div>
   </section>
 
-  <section class="benefits" id="benefits">
-    <div class="container">
-      <h2 class="section-title">Преимущества работы вебкам моделью удаленно</h2>
-      <p class="section-subtitle">Дорожим командой, поэтому заботимся о комфорте и спокойствии каждого</p>
-
-      <div class="features-grid benefits-grid">
-        <div class="benefit-card animated">
-          <div class="benefit-icon" style="background-image:url('https://cdn.pixabay.com/user/2014/12/07/17-17-10-70_96x96.png');"></div>
-          <h3>Работа из дома</h3>
-          <p>Работайте из любой точки мира в комфортной обстановке без необходимости арендовать студию или офис</p>
-        </div>
-
-        <div class="benefit-card animated">
-          <div class="benefit-icon" style="background-image:url('https://cdn.pixabay.com/photo/2018/11/09/21/05/girl-3801097_96x96.png');"></div>
-          <h3>Высокий доход</h3>
-          <p>Зарабатывайте от 80,000 ₽ в неделю с еженедельными выплатами и прозрачной системой расчета</p>
-        </div>
-
-        <div class="benefit-card animated">
-          <div class="benefit-icon" style="background-image:url('https://cdn.pixabay.com/photo/2015/07/17/22/43/girl-849790_96x96.png');"></div>
-          <h3>Полная анонимность</h3>
-          <p>Мы гарантируем конфиденциальность и защиту ваших персональных данных</p>
-        </div>
-
-        <div class="benefit-card animated">
-          <div class="benefit-icon" style="background-image:url('https://cdn.pixabay.com/photo/2017/06/13/12/53/girl-2407757_96x96.png');"></div>
-          <h3>Гибкий график</h3>
-          <p>Самостоятельно планируйте рабочее время и продолжительность стримов</p>
-        </div>
-
-        <div class="benefit-card animated">
-          <div class="benefit-icon" style="background-image:url('https://cdn.pixabay.com/photo/2018/05/15/21/51/woman-3406598_96x96.png');"></div>
-          <h3>Поддержка 24/7</h3>
-          <p>Круглосуточная помощь менеджеров, техническая поддержка и модерация чатов</p>
-        </div>
-
-        <div class="benefit-card animated">
-          <div class="benefit-icon" style="background-image:url('https://cdn.pixabay.com/photo/2016/11/21/12/25/girl-1840082_96x96.png');"></div>
-          <h3>Обучение и развитие</h3>
-          <p>Бесплатное обучение, персональный коучинг и помощь в профессиональном росте</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="tariffs" id="tariffs">
-    <div class="container">
-      <h2 class="section-title">Наши тарифы</h2>
-      <p class="section-subtitle">Выберите подходящий вариант сотрудничества и начните зарабатывать уже сегодня</p>
-
-      <div class="tariffs-grid">
-        <div class="tariff-card animated">
-          <div class="tariff-header">
-            <h3 class="tariff-name">ВСЁ САМА</h3>
-            <div class="tariff-percent">20%</div>
-            <p class="tariff-description">Для самостоятельных моделей</p>
-          </div>
-
-          <ul class="tariff-features">
-            <li><i class="fas fa-check"></i> Самостоятельная работа без куратора</li>
-            <li><i class="fas fa-check"></i> Помощь с настройкой оборудования</li>
-            <li><i class="fas fa-check"></i> Статистика стримов и минимальные советы</li>
-            <li><i class="fas fa-check"></i> Выплаты: еженедельно</li>
-            <li><i class="fas fa-check"></i> Техническая поддержка 24/7</li>
-          </ul>
-          <a href="https://t.me/stripup_support" class="btn">Выбрать тариф</a>
-        </div>
-
-        <div class="tariff-card popular animated">
-          <div class="tariff-header">
-            <h3 class="tariff-name">КОУЧ ПЛЮС</h3>
-            <div class="tariff-percent">30%</div>
-            <p class="tariff-description">Оптимальный вариант с поддержкой</p>
-          </div>
-
-          <ul class="tariff-features">
-            <li><i class="fas fa-check"></i> Всё из пакета "Всё сама"</li>
-            <li><i class="fas fa-check"></i> Персональный коучинг</li>
-            <li><i class="fas fa-check"></i> Разбор работы раз в две недели</li>
-            <li><i class="fas fa-check"></i> Помощь с удалением сливов</li>
-            <li><i class="fas fa-check"></i> Выплаты: еженедельно</li>
-            <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
-          </ul>
-          <a href="https://t.me/stripup_support" class="btn">Выбрать тариф</a>
-        </div>
-
-        <div class="tariff-card animated">
-          <div class="tariff-header">
-            <h3 class="tariff-name">ЛИЧНЫЙ ОПЕРАТОР</h3>
-            <div class="tariff-percent">40%</div>
-            <p class="tariff-description">Максимальная поддержка и забота</p>
-          </div>
-
-          <ul class="tariff-features">
-            <li><i class="fas fa-check"></i> Всё из пакета "Коуч плюс"</li>
-            <li><i class="fas fa-check"></i> Персональный менеджер 24/7</li>
-            <li><i class="fas fa-check"></i> Помощь с созданием контента</li>
-            <li><i class="fas fa-check"></i> Продвижение на платформах</li>
-            <li><i class="fas fa-check"></i> Эксклюзивные рекламные возможности</li>
-            <li><i class="fas fa-check"></i> Приоритет в технической поддержке</li>
-            <li><i class="fas fa-check"></i> VIP-статус и особые условия</li>
-          </ul>
-          <a href="https://t.me/stripup_support" class="btn">Выбрать тариф</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="calculator">
-    <div class="container">
-      <h2 class="section-title">Калькулятор заработка</h2>
-      <p class="section-subtitle">Рассчитайте ваш потенциальный недельный доход в рублях с учетом выбранного тарифа</p>
-
-      <div class="calculator-container">
-        <div class="calculator-input">
-          <label for="hours">Сколько часов в неделю планируете работать:</label>
-          <input type="number" id="hours" min="0" value="20" oninput="calculateIncome()">
-        </div>
-
-        <div class="calculator-input">
-          <label for="hourlyRate">Ожидаемый часовой заработок (руб):</label>
-          <input type="number" id="hourlyRate" min="0" value="2000" oninput="calculateIncome()">
-        </div>
-
-        <div class="calculator-input">
-          <label for="tariff">Выберите тариф:</label>
-          <select id="tariff" onchange="calculateIncome()">
-            <option value="0.2">Всё сама (20% комиссия)</option>
-            <option value="0.3" selected>Коуч плюс (30% комиссия)</option>
-            <option value="0.4">Личный оператор (40% комиссия)</option>
-          </select>
-        </div>
-
-        <div class="calculator-result">
-          <h3>Ваш заработок в неделю после комиссии:</h3>
-          <div class="result-amount" id="result">28 000 ₽</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="how-it-works">
-    <div class="container">
-      <h2 class="section-title">Как начать работать?</h2>
-      <p class="section-subtitle">Всего 3 простых шага отделяют тебя от начала карьеры</p>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Напиши в Telegram</h3>
-          <p>Свяжись с нами через Telegram для консультации и выбора тарифа</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Пройти обучение</h3>
-          <p>Мы проведем бесплатное обучение и поможем настроить оборудование</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Начать работать</h3>
-          <p>После обучения ты сможешь сразу приступить к работе и получать доход</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- ======= CTA ======= -->
   <section class="cta">
     <div class="container">
       <h2>Готовы изменить свою жизнь?</h2>
-      <p>Присоединяйтесь к нашей дружной команде прямо сейчас и начните зарабатывать уже сегодня!</p>
-      <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Присоединиться сейчас</a>
+      <p>Присоединяйтесь к StripUp прямо сейчас и начните зарабатывать уже сегодня!</p>
+      <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Присоединиться</a>
     </div>
   </section>
 
+  <!-- ======= FOOTER ======= -->
   <footer>
     <div class="container">
       <div class="footer-content">
         <div class="footer-column">
           <h3>StripUp</h3>
           <p>Современная вебкам-студия с лучшими условиями для работы и развития</p>
-          <div class="social-icons">
-            <a href="https://t.me/stripup_support"><i class="fab fa-telegram"></i></a>
-          </div>
+          <div class="social-icons"><a href="https://t.me/stripup_support"><i class="fab fa-telegram"></i></a></div>
         </div>
-
         <div class="footer-column">
           <h3>Навигация</h3>
           <ul class="footer-links">
@@ -517,7 +257,6 @@
             <li><a href="#benefits">Преимущества</a></li>
           </ul>
         </div>
-
         <div class="footer-column">
           <h3>Контакты</h3>
           <ul class="footer-links">
@@ -526,58 +265,19 @@
           </ul>
         </div>
       </div>
-
       <div class="footer-bottom">
         <p>© 2025 StripUp. Все права защищены. | Политика конфиденциальности</p>
       </div>
     </div>
   </footer>
 
+  <!-- ======= SCRIPT ======= -->
   <script>
-    // Калькулятор дохода
-    function calculateIncome() {
-      const hours = parseInt(document.getElementById('hours').value) || 0;
-      const hourlyRate = parseInt(document.getElementById('hourlyRate').value) || 0;
-      const tariff = parseFloat(document.getElementById('tariff').value);
-      const result = Math.max(0, (hours * hourlyRate) * (1 - tariff));
-      document.getElementById('result').textContent = result.toLocaleString('ru-RU') + ' ₽';
-    }
-
-    // Прокрутка к началу при клике на логотип
-    document.getElementById('logoLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.addEventListener("DOMContentLoaded",()=>{
+      const hero=document.querySelector(".hero-content");
+      hero.classList.add("animated");
+      document.querySelector(".logo").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
     });
-
-    // Анимация появления элементов при прокрутке
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.12 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animated');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Наблюдаем за карточками
-    document.querySelectorAll('.feature-card, .benefit-card, .tariff-card').forEach(card => observer.observe(card));
-
-    // Плавная прокрутка для навигации
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        e.preventDefault();
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
-        }
-      });
-    });
-
-    // Инициализация калькулятора при загрузке
-    document.addEventListener('DOMContentLoaded', function() { calculateIncome(); });
   </script>
 </body>
 </html>
