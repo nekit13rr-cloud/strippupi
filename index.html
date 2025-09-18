@@ -43,33 +43,40 @@ header {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* мягкая тень */
 }
 .nav-links a {
-  text-decoration: none;
-  color: #fff; /* делаем белые ссылки */
+  padding: 8px 16px;
+  border-radius: 12px;
   font-weight: 600;
-  position: relative;
-  transition: color .3s;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6); /* добавляем тень для читаемости */
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
 }
 
-.nav-links a:after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--dark-pink); /* подчеркивание розовое */
-  transition: width .3s;
+/* Главная */
+.nav-links a:nth-child(1) {
+  background-image: url("https://i.imgur.com/YuKQ9vS.jpg");
+}
+
+/* О нас */
+.nav-links a:nth-child(2) {
+  background-image: url("https://i.imgur.com/zkx2Azb.jpeg");
+}
+
+/* Тарифы */
+.nav-links a:nth-child(3) {
+  background-image: url("https://i.imgur.com/sv6RVRL.jpeg");
+}
+
+/* Контакты */
+.nav-links a:nth-child(4) {
+  background-image: url("https://i.imgur.com/4AiXzf8.jpeg");
 }
 
 .nav-links a:hover {
-  color: var(--dark-pink); /* розовый при наведении */
+  filter: brightness(1.2);
+  transform: translateY(-2px);
 }
-
-.nav-links a:hover:after {
-  width: 100%;
-}
-
     /* Hero Section */
     .hero{display:flex;align-items:center;min-height:90vh;padding:60px 0;gap:50px;position:relative;overflow:hidden;}
     /* big hero background image (with overlay for readable text) */
