@@ -1,1436 +1,654 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SakuraDreams - Аниме Вебкам Студия</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-pink: #ff9bb9;
-            --light-pink: #ffd1dc;
-            --soft-pink: #ffecef;
-            --dark-pink: #ff4d8d;
-            --text-color: #5a3d5c;
-            --light-text: #7a5c7d;
-            --white: #ffffff;
-            --gradient: linear-gradient(135deg, var(--light-pink) 0%, var(--soft-pink) 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
-            background: var(--gradient);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            padding: 20px 0;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--dark-pink);
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 35px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--dark-pink);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--dark-pink);
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .header-btn {
-            padding: 12px 25px;
-            background: var(--dark-pink);
-            color: var(--white);
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
-        }
-
-        .header-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 77, 141, 0.4);
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            align-items: center;
-            min-height: 90vh;
-            padding: 60px 0;
-            gap: 50px;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: url('https://i.ibb.co.com/6NY0L2T/anime-bg.png') no-repeat center center;
-            background-size: cover;
-            opacity: 0.1;
-            z-index: -1;
-            border-radius: 20px;
-        }
-
-        .hero-content {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            color: var(--text-color);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: var(--light-text);
-            max-width: 90%;
-        }
-
-        .highlight {
-            color: var(--dark-pink);
-            font-weight: 700;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 40px;
-            background: var(--dark-pink);
-            color: var(--white);
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
-            border: none;
-            cursor: pointer;
-            margin-right: 15px;
-            margin-bottom: 15px;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 77, 141, 0.4);
-        }
-
-        .btn-transparent {
-            background: transparent;
-            border: 2px solid var(--dark-pink);
-            color: var(--dark-pink);
-            box-shadow: none;
-        }
-
-        .btn-transparent:hover {
-            background: rgba(255, 77, 141, 0.1);
-        }
-
-        .btn-telegram {
-            background: #0088cc;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-telegram i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-value {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--dark-pink);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--light-text);
-        }
-
-        .payment-note {
-            background: rgba(255, 77, 141, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 0;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-        }
-
-        .about-content {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-image {
-            flex: 1;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .anime-badge {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--dark-pink);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 30px;
-            font-weight: bold;
-            transform: rotate(5deg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--text-color);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--dark-pink);
-            border-radius: 3px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 60px;
-            color: var(--light-text);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: var(--gradient);
-            z-index: 0;
-            opacity: 0.7;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 30px;
-            color: var(--dark-pink);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-color);
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card p {
-            color: var(--light-text);
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            padding: 100px 0;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .benefit-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .benefit-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 30px;
-            color: var(--dark-pink);
-        }
-
-        .benefit-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .benefit-card p {
-            color: var(--light-text);
-        }
-
-        /* Security Section */
-        .security {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .security-content {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-        }
-
-        .security-badge {
-            display: inline-block;
-            background: var(--dark-pink);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        /* Tariffs Section */
-        .tariffs {
-            padding: 100px 0;
-        }
-
-        .tariffs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .tariff-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tariff-card.popular {
-            border: 2px solid var(--dark-pink);
-            transform: scale(1.05);
-        }
-
-        .tariff-card.popular::before {
-            content: 'ВЫГОДНО';
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: var(--dark-pink);
-            color: white;
-            padding: 5px 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transform: rotate(45deg);
-        }
-
-        .tariff-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .tariff-card.popular:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-
-        .tariff-header {
-            margin-bottom: 30px;
-        }
-
-        .tariff-name {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-
-        .tariff-percent {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark-pink);
-            margin-bottom: 10px;
-        }
-
-        .tariff-description {
-            color: var(--light-text);
-            margin-bottom: 20px;
-        }
-
-        .tariff-features {
-            list-style: none;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .tariff-features li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-
-        .tariff-features li i {
-            color: var(--dark-pink);
-            margin-right: 10px;
-        }
-
-        .tariff-note {
-            font-size: 0.9rem;
-            color: var(--light-text);
-            margin-top: 15px;
-            font-style: italic;
-        }
-
-        /* Calculator Section */
-        .calculator {
-            padding: 100px 0;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-        }
-
-        .calculator-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-        }
-
-        .calculator-input {
-            margin-bottom: 25px;
-        }
-
-        .calculator-input label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
-            color: var(--text-color);
-        }
-
-        .calculator-input input, .calculator-input select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid var(--light-pink);
-            border-radius: 10px;
-            font-size: 1.1rem;
-            transition: border-color 0.3s;
-        }
-
-        .calculator-input input:focus, .calculator-input select:focus {
-            border-color: var(--dark-pink);
-            outline: none;
-        }
-
-        .calculator-result {
-            background: var(--gradient);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .calculator-result h3 {
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .result-amount {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--dark-pink);
-        }
-
-        /* How it Works */
-        .how-it-works {
-            padding: 100px 0;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-        }
-
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 60px;
-            position: relative;
-        }
-
-        .steps:before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--light-pink);
-            z-index: 1;
-        }
-
-        .step {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            flex: 1;
-            padding: 0 20px;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: var(--dark-pink);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 auto 25px;
-            position: relative;
-        }
-
-        .step-number:after {
-            content: '';
-            position: absolute;
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 2px solid var(--light-pink);
-        }
-
-        .step h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .step p {
-            color: var(--light-text);
-        }
-
-        /* CTA Section */
-        .cta {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 30px;
-            padding: 80px 60px;
-            text-align: center;
-            margin: 80px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--text-color);
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            color: var(--light-text);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 60px 0 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--text-color);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--dark-pink);
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: var(--light-text);
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--dark-pink);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-pink);
-            font-size: 18px;
-            transition: transform 0.3s;
-        }
-
-        .social-icons a:hover {
-            transform: translateY(-5px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 0;
-            }
-
-            .hero-content {
-                width: 100%;
-            }
-
-            .hero p {
-                max-width: 100%;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .steps {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .steps:before {
-                display: none;
-            }
-
-            .about-content {
-                flex-direction: column;
-            }
-
-            .tariff-card.popular {
-                transform: scale(1);
-            }
-
-            .tariff-card.popular:hover {
-                transform: translateY(-10px);
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .stat-value {
-                font-size: 1.8rem;
-            }
-
-            .cta {
-                padding: 50px 30px;
-            }
-
-            .cta h2 {
-                font-size: 2rem;
-            }
-
-            .tariff-card.popular::before {
-                top: 15px;
-                right: -30px;
-                font-size: 0.7rem;
-                padding: 5px 30px;
-            }
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animated {
-            animation: fadeIn 1s ease-out;
-        }
-
-        .anime-character {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 200px;
-            z-index: 5;
-        }
-        
-        /* Новые стили для улучшений */
-        .testimonials {
-            padding: 80px 0;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 40px;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: var(--light-text);
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .testimonial-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-        
-        .faq-section {
-            padding: 80px 0;
-        }
-        
-        .faq-item {
-            margin-bottom: 20px;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .faq-question {
-            padding: 20px;
-            background: var(--soft-pink);
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 20px;
-            max-height: 300px;
-        }
-        
-        .community-section {
-            text-align: center;
-            padding: 80px 0;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 40px;
-        }
-        
-        .community-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
-        
-        .community-stat {
-            text-align: center;
-        }
-        
-        .community-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark-pink);
-        }
-        
-        .community-label {
-            color: var(--light-text);
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SakuraDreams — Аниме Вебкам Студия</title>
+  <meta name="description" content="SakuraDreams — уютная аниме-вебкам студия. Работа из дома, обучение, анонимность и высокий доход." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="SakuraDreams — Аниме Вебкам Студия" />
+  <meta property="og:description" content="Join our pastel anime community — учимся, работаем, зарабатываем в комфортной атмосфере." />
+  <!-- Если позже добавишь прямую картинку, укажи в og:image -->
+  <link rel="icon" href="https://i.ibb.co/8mYxg2H/sakura-favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #ffdcbf; /* light peach */
+      --bg2: #ffd1dc; /* pink */
+      --accent: #ff4d8d;
+      --accent-2: #ff7e67;
+      --text: #5a3d5c;
+      --muted: #7a5c7d;
+      --glass: rgba(255,255,255,0.6);
+      --glass-2: rgba(255,255,255,0.35);
+      --radius: 20px;
+      --card-radius: 24px;
+    }
+
+    /* Reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+      background: linear-gradient(135deg,var(--bg1) 0%, #fff1f6 40%, #fff7f0 100%);
+    }
+
+    /* Fullscreen animated gradient / subtle movement */
+    .full-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,190,170,0.45), transparent 10%),
+                  radial-gradient(800px 400px at 90% 90%, rgba(255,160,185,0.35), transparent 10%),
+                  linear-gradient(135deg, #fff0e8 0%, #ffe6f0 40%, #fffaf6 100%);
+      animation: bgShift 12s ease-in-out infinite alternate;
+      filter: saturate(1.06);
+    }
+    @keyframes bgShift {
+      from { transform: translateY(-12px) rotate(-1deg) scale(1.01); }
+      to   { transform: translateY(12px) rotate(1deg) scale(1); }
+    }
+
+    /* canvas for petals */
+    #petalCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
+    }
+
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{
+      position: sticky; top:12px; z-index:60;
+      padding:12px 0;
+      .container{}
+      display:flex; align-items:center; justify-content:space-between;
+    }
+
+    .header-inner{
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0.35));
+      padding:10px 16px; border-radius:999px;
+      box-shadow: 0 6px 20px rgba(90,61,92,0.06);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo{
+      display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--accent);
+      font-weight:700; font-size:20px;
+    }
+    .logo i{font-size:22px; transform:translateY(2px)}
+
+    nav{display:flex; gap:18px; align-items:center}
+    nav a{
+      text-decoration:none; color:var(--text); font-weight:600; padding:8px 12px; border-radius:10px;
+      transition: all .22s;
+      font-size:15px;
+    }
+    nav a:hover{background:rgba(255,255,255,0.35); color:var(--accent)}
+
+    .cta-telegram{
+      display:inline-flex; align-items:center; gap:10px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white; padding:10px 14px; border-radius:999px; font-weight:700; text-decoration:none;
+      box-shadow:0 8px 20px rgba(255,77,141,0.18);
+    }
+
+    /* burger for mobile */
+    .burger{display:none; width:44px; height:44px; border-radius:12px; background:var(--glass-2); align-items:center; justify-content:center; cursor:pointer}
+    .burger div{width:22px; height:2px; background:var(--accent); border-radius:2px; position:relative}
+    .burger div:before, .burger div:after{content:""; position:absolute; width:22px; height:2px; background:var(--accent); left:0; border-radius:2px}
+    .burger div:before{top:-7px} .burger div:after{top:7px}
+
+    /* Hero */
+    .hero{
+      padding:60px 0 40px;
+      display:flex; gap:30px; align-items:center;
+    }
+
+    .hero-left{
+      flex:1; max-width:680px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.55));
+      border-radius:var(--card-radius); padding:28px; box-shadow:0 18px 50px rgba(90,61,92,0.07);
+      backdrop-filter: blur(8px);
+    }
+    .kicker{display:inline-block; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; padding:6px 12px; border-radius:999px; font-weight:700; font-size:13px; margin-bottom:14px}
+    .hero-left h1{font-size:2.2rem; margin:10px 0 12px; line-height:1.05;color:var(--text)}
+    .hero-left p{color:var(--muted); margin-bottom:18px}
+    .hero-ctas{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      padding:12px 18px; border-radius:999px; font-weight:700; cursor:pointer; border:none; text-decoration:none;
+      transition:transform .18s, box-shadow .18s;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; box-shadow:0 10px 30px rgba(255,77,141,0.16)}
+    .btn-ghost{background:transparent; border:2px solid rgba(255,79,141,0.12); color:var(--accent)}
+    .btn:hover{transform:translateY(-4px)}
+
+    .hero-stats{display:flex; gap:18px; margin-top:18px}
+    .stat{background:var(--glass); padding:12px 16px; border-radius:14px; min-width:120px; text-align:center}
+    .stat .num{font-size:1.6rem; color:var(--accent); font-weight:800}
+    .stat .label{font-size:13px; color:var(--muted)}
+
+    /* Hero right image */
+    .hero-right{flex:0 0 360px; position:relative; display:flex; align-items:flex-end; justify-content:center}
+    .anime-figure{
+      width:320px; transform:translateY(0); transition:transform .6s;
+      filter: drop-shadow(0 20px 40px rgba(90,61,92,0.12));
+    }
+    .anime-figure:hover{transform:translateY(-8px) rotate(-1deg)}
+
+    /* sections */
+    section{padding:70px 0}
+    .section-title{font-size:1.9rem; text-align:center; margin-bottom:8px; font-weight:700}
+    .section-sub{color:var(--muted); text-align:center; max-width:780px; margin:6px auto 30px}
+
+    /* Cards grid */
+    .grid{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.5));
+      border-radius:18px; padding:20px; box-shadow:0 12px 30px rgba(90,61,92,0.06); backdrop-filter: blur(6px);
+      transition:transform .28s, box-shadow .28s;
+    }
+    .card:hover{transform:translateY(-10px); box-shadow:0 20px 50px rgba(90,61,92,0.1)}
+
+    /* tariffs style */
+    .tariff .price{font-size:2rem; font-weight:800; color:var(--accent)}
+    .tariff.popular{border:2px solid rgba(255,77,141,0.12); transform:scale(1.03)}
+
+    /* testimonials slider (simple) */
+    .testimonials-wrap{position:relative}
+    .testimonials{display:flex; gap:18px; overflow:hidden}
+    .testimonial{
+      min-width:320px; max-width:420px; flex:0 0 auto;
+    }
+
+    /* FAQ */
+    .faq-item{overflow:hidden; border-radius:12px}
+    .faq-q{padding:14px 18px; background:linear-gradient(90deg, rgba(255,240,235,0.9), rgba(255,245,248,0.7)); cursor:pointer; display:flex; justify-content:space-between; align-items:center}
+    .faq-a{padding:0 18px; max-height:0; overflow:hidden; transition:max-height .28s, padding .28s}
+    .faq-item.open .faq-a{padding:14px 18px; max-height:400px}
+
+    /* footer */
+    footer{padding:40px 0; text-align:center; color:var(--muted)}
+    .socials a{margin:0 8px; text-decoration:none; color:var(--accent)}
+
+    /* floating telegram */
+    .float-telegram{
+      position:fixed; right:18px; bottom:18px; z-index:70;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white;
+      padding:12px 14px; border-radius:999px; display:flex; align-items:center; gap:10px; text-decoration:none;
+      box-shadow:0 18px 50px rgba(255,77,141,0.18);
+    }
+
+    /* counters */
+    .count{font-size:1.8rem; font-weight:800; color:var(--accent)}
+
+    /* responsive */
+    @media (max-width:990px){
+      .hero{flex-direction:column; align-items:center}
+      .hero-right{order:-1;margin-bottom:10px}
+      nav{display:none}
+      .burger{display:flex}
+    }
+    @media (max-width:520px){
+      .hero-left h1{font-size:1.6rem}
+    }
+
+    /* subtle sparkle on hover */
+    .sparkle {
+      position:relative;
+      overflow:visible;
+    }
+    .sparkle:after{
+      content:""; position:absolute; inset:auto; width:12px; height:12px; border-radius:50%;
+      right:8px; top:8px; background:rgba(255,255,255,0.7); filter:blur(6px); opacity:0; transition:opacity .3s;
+    }
+    .btn-primary:hover .sparkle:after{opacity:0.9}
+  </style>
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo" id="logoLink">
-                    <i class="fas fa-cherry-blossom"></i> SakuraDreams
-                </a>
-                <div class="nav-links">
-                    <a href="#">Главная</a>
-                    <a href="#about">О нас</a>
-                    <a href="#tariffs">Тарифы</a>
-                    <a href="#benefits">Преимущества</a>
-                    <a href="#testimonials">Отзывы</a>
-                </div>
-                <a href="https://t.me/sakuradreams_support" class="header-btn">Написать в Telegram</a>
-            </div>
-        </div>
-    </header>
+  <div class="full-bg"></div>
+  <canvas id="petalCanvas"></canvas>
 
-    <section class="hero" id="heroSection">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Раскрой свой аниме-потенциал и начни зарабатывать!</h1>
-                <p>Стать частью команды, где бы вы ни находились. Гармоничная, прибыльная и стабильная работа в вебкаме
-                    на дому для девушек.</p>
-                <div class="hero-buttons">
-                    <a href="https://t.me/sakuradreams_support" class="btn btn-telegram"><i
-                            class="fab fa-telegram"></i> Написать в Telegram</a>
-                    <a href="#tariffs" class="btn btn-transparent">Выбрать тариф</a>
-                </div>
-                <div class="payment-note">
-                    <i class="fas fa-info-circle"></i> Оплата раз в неделю первый месяц, далее два раза в месяц
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-value">120,000 ₽</span>
-                        <span class="stat-label">средний доход</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">24/7</span>
-                        <span class="stat-label">поддержка</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">500+</span>
-                        <span class="stat-label">моделей</span>
-                    </div>
-                </div>
+  <header>
+    <div class="container">
+      <div class="header-inner" style="display:flex;align-items:center;justify-content:space-between">
+        <a href="#" class="logo" id="logoLink"><i>🌸</i> SakuraDreams</a>
+
+        <nav>
+          <a href="#hero">Главная</a>
+          <a href="#about">О нас</a>
+          <a href="#tariffs">Тарифы</a>
+          <a href="#benefits">Преимущества</a>
+          <a href="#testimonials">Отзывы</a>
+        </nav>
+
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="burger" id="burgerBtn" aria-label="Меню">
+            <div></div>
+          </button>
+          <a href="https://t.me/sakuradreams_support" class="cta-telegram">Написать в Telegram</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="container" style="display:flex;gap:30px;align-items:center;flex-wrap:wrap">
+        <div class="hero-left" role="region" aria-labelledby="heroTitle">
+          <span class="kicker">Присоединяйся</span>
+          <h1 id="heroTitle">Раскрой свой аниме-потенциал и начни зарабатывать в уютной атмосфере</h1>
+          <p>Работа из дома, поддержка, анонимность и обучение — всё в тёплой розово-персиковой студии SakuraDreams.</p>
+
+          <div class="hero-ctas">
+            <a href="https://t.me/sakuradreams_support" class="btn btn-primary"><span class="sparkle">💬</span> Написать в Telegram</a>
+            <a href="#tariffs" class="btn btn-ghost">Выбрать тариф</a>
+          </div>
+
+          <div class="hero-stats" aria-hidden="true">
+            <div class="stat">
+              <div class="num count" data-target="120000">0</div>
+              <div class="label">средний доход</div>
             </div>
+            <div class="stat">
+              <div class="num">24/7</div>
+              <div class="label">поддержка</div>
+            </div>
+            <div class="stat">
+              <div class="num count" data-target="500">0</div>
+              <div class="label">моделей</div>
+            </div>
+          </div>
         </div>
-        <div class="anime-character">
-            <img src="https://i.ibb.co.com/4Zn3y1T/cute-anime-girl.png" alt="Аниме девушка">
+
+        <div class="hero-right">
+          <!-- Anime figure (external PNG link — заменяем при необходимости) -->
+          <img class="anime-figure" src="https://www.pngmart.com/files/5/Pastel-Anime-Girl-PNG.png" alt="Аниме девушка" style="border-radius:18px">
         </div>
+      </div>
     </section>
 
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">О вебкам студии</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p><strong>SakuraDreams — ЛУЧШАЯ СТРИМИНГ-СТУДИЯ С ЭКОЛОГИЧНЫМ ПОДХОДОМ</strong></p>
-                    <p>Мы открыли принципиально новое направление онлайн-работы в вебкаме на дому. «SakuraDreams»
-                        призван давать еще больший комфорт и свободу. Теперь не нужно ездить в офис — он там, где вы.</p>
-                    <p>Каждый в команде — особенный. Мы заботимся о защищенности наших моделей, их настроении и
-                        реализации. Дорожим командой, поэтому заботимся о комфорте и спокойствии каждого.</p>
-                    <div class="payment-note">
-                        <i class="fas fa-shield-alt"></i> Полная анонимность и защита данных. Проводим уроки по
-                        безопасности и помогаем предотвращать нежелательное распространение контента.
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="anime-badge">Аниме-сообщество</div>
-                    <img src="https://i.ibb.co.com/0QZ6L1P/anime-girls-group.png" alt="Аниме девушки">
-                </div>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">О вебкам студии</h2>
+        <p class="section-sub">Комфорт, анонимность и забота — наша приоритетная миссия.</p>
+
+        <div class="grid" style="grid-template-columns: 1fr 420px; align-items:center;">
+          <div>
+            <div class="card" style="margin-bottom:14px">
+              <h3>Мы рядом и заботимся</h3>
+              <p style="color:var(--muted)">SakuraDreams — это безопасное пространство, обучение, персональная поддержка и гибкий график для девушек, которые хотят работать из дома.</p>
             </div>
+
+            <div class="card">
+              <h4>Безопасность и анонимность</h4>
+              <p style="color:var(--muted)">Мы помогаем с приватностью, учим как защитить контент и обеспечиваем техническую поддержку 24/7.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:center;">
+            <!-- похожая по стилю аниме-девочка -->
+            <img src="https://www.pngmart.com/files/6/Pastel-Anime-Girl-PNG-File.png" alt="Аниме группа" style="width:320px;border-radius:18px;box-shadow:0 18px 40px rgba(90,61,92,0.08)">
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="security">
-        <div class="container">
-            <div class="security-content">
-                <span class="security-badge"><i class="fas fa-shield-alt"></i> БЕЗОПАСНОСТЬ</span>
-                <h2>Полная анонимность и защита ваших данных</h2>
-                <p>Мы проводим регулярные уроки по безопасности, помогаем настроить приватность и защищаем вашу личную
-                    информацию. Наша система предотвращает нежелательное распространение контента и обеспечивает полную
-                    конфиденциальность.</p>
-            </div>
+    <!-- BENEFITS -->
+    <section id="benefits" style="padding-top:20px">
+      <div class="container">
+        <h2 class="section-title">Преимущества</h2>
+        <p class="section-sub">Мягкая поддержка, обучение и высокий доход в уютной студии.</p>
+
+        <div class="grid">
+          <div class="card">
+            <h4>Работа из дома</h4>
+            <p style="color:var(--muted)">Не нужно арендовать студию — всё можно делать из уютной комнаты.</p>
+          </div>
+          <div class="card">
+            <h4>Гибкий график</h4>
+            <p style="color:var(--muted)">Самостоятельно планируй свои стримы и отдых.</p>
+          </div>
+          <div class="card">
+            <h4>Анонимность</h4>
+            <p style="color:var(--muted)">Помогаем настроить приватность и защищаем данные.</p>
+          </div>
+          <div class="card">
+            <h4>Обучение</h4>
+            <p style="color:var(--muted)">Бесплатные курсы и персональный коуч.</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="benefits" id="benefits">
-        <div class="container">
-            <h2 class="section-title">Преимущества работы вебкам моделью удаленно</h2>
-            <p class="section-subtitle">Дорожим командой, поэтому заботимся о комфорте и спокойствии каждого</p>
-            <div class="benefits-grid">
-                <div class="benefit-card animated">
-                    <div class="benefit-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>Работа из дома</h3>
-                    <p>Работайте из любой точки мира в комфортной обстановке без необходимости арендовать студию или
-                        офис</p>
-                </div>
-                <div class="benefit-card animated">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Высокий доход</h3>
-                    <p>Зарабатывайте от 80,000 ₽ в неделю с еженедельными выплатами и прозрачной системой расчета</p>
-                </div>
-                <div class="benefit-card animated">
-                    <div class="benefit-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Полная анонимность</h3>
-                    <p>Мы гарантируем конфиденциальность и защиту ваших персональных данных</p>
-                </div>
-                <div class="benefit-card animated">
-                    <div class="benefit-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Гибкий график</h3>
-                    <p>Самостоятельно планируйте рабочее время и продолжительность стримов</p>
-                </div>
-                <div class="benefit-card animated">
-                    <div class="benefit-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Поддержка 24/7</h3>
-                    <p>Круглосуточная помощь менеджеров, техническая поддержка и модерация чатов</p>
-                </div>
-                <div class="benefit-card animated">
-                    <div class="benefit-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3>Обучение и развитие</h3>
-                    <p>Бесплатное обучение, персональный коучинг и помощь в профессиональном росте</p>
-                </div>
-            </div>
+    <!-- TARIFFS -->
+    <section id="tariffs">
+      <div class="container">
+        <h2 class="section-title">Тарифы</h2>
+        <p class="section-sub">Выбери подходящий пакет — от самостоятельного до с личным оператором.</p>
+
+        <div class="grid">
+          <div class="card tariff">
+            <h3>ВСЁ САМА</h3>
+            <div class="price">20%</div>
+            <p style="color:var(--muted)">Для опытных моделей, которые всё делают самостоятельно.</p>
+            <ul style="color:var(--muted)">
+              <li>Техподдержка 24/7</li>
+              <li>Базовый анализ</li>
+            </ul>
+            <a href="https://t.me/sakuradreams_support" class="btn btn-primary" style="margin-top:10px">Выбрать</a>
+          </div>
+
+          <div class="card tariff popular">
+            <h3>КОУЧ ПЛЮС</h3>
+            <div class="price">30%</div>
+            <p style="color:var(--muted)">Оптимальный: коучинг + аналитика.</p>
+            <ul style="color:var(--muted)">
+              <li>Персональный коуч</li>
+              <li>Приоритетная поддержка</li>
+            </ul>
+            <a href="https://t.me/sakuradreams_support" class="btn btn-primary" style="margin-top:10px">Выбрать</a>
+          </div>
+
+          <div class="card tariff">
+            <h3>ЛИЧНЫЙ ОПЕРАТОР</h3>
+            <div class="price">40%</div>
+            <p style="color:var(--muted)">Максимальная поддержка: оператор и стратегия.</p>
+            <a href="https://t.me/sakuradreams_support" class="btn btn-primary" style="margin-top:10px">Выбрать</a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="tariffs" id="tariffs">
-        <div class="container">
-            <h2 class="section-title">Наши тарифы</h2>
-            <p class="section-subtitle">Выберите подходящий вариант сотрудничества и начните зарабатывать уже сегодня</p>
-            <div class="tariffs-grid">
-                <div class="tariff-card animated">
-                    <div class="tariff-header">
-                        <h3 class="tariff-name">ВСЁ САМА</h3>
-                        <div class="tariff-percent">20%</div>
-                        <p class="tariff-description">Для опытных моделей</p>
-                    </div>
-                    <ul class="tariff-features">
-                        <li><i class="fas fa-check"></i> Самостоятельная работа без куратора</li>
-                        <li><i class="fas fa-check"></i> Помощь с настройкой оборудования</li>
-                        <li><i class="fas fa-check"></i> Базовая статистика и минимальные советы</li>
-                        <li><i class="fas fa-check"></i> Техническая поддержка 24/7</li>
-                        <li><i class="fas fa-check"></i> Гарантия анонимности</li>
-                    </ul>
-                    <p class="tariff-note">Выплаты: первый месяц еженедельно, далее два раза в месяц</p>
-                    <a href="https://t.me/sakuradreams_support" class="btn">Выбрать тариф</a>
-                </div>
-                
-                <div class="tariff-card popular animated">
-                    <div class="tariff-header">
-                        <h3 class="tariff-name">КОУЧ ПЛЮС</h3>
-                        <div class="tariff-percent">30%</div>
-                        <p class="tariff-description">Оптимальный вариант с поддержкой</p>
-                    </div>
-                    <ul class="tariff-features">
-                        <li><i class="fas fa-check"></i> Всё из пакета "Всё сама"</li>
-                        <li><i class="fas fa-check"></i> Персональный коучинг и анализ работы</li>
-                        <li><i class="fas fa-check"></i> Разбор показателей раз в две недели</li>
-                        <li><i class="fas fa-check"></i> Помощь с вопросами безопасности</li>
-                        <li><i class="fas fa-check"></i> Защита от нежелательного контента</li>
-                        <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
-                    </ul>
-                    <p class="tariff-note">Выплаты: первый месяц еженедельно, далее два раза в месяц</p>
-                    <a href="https://t.me/sakuradreams_support" class="btn">Выбрать тариф</a>
-                </div>
-                
-                <div class="tariff-card animated">
-                    <div class="tariff-header">
-                        <h3 class="tariff-name">ЛИЧНЫЙ ОПЕРАТОР</h3>
-                        <div class="tariff-percent">40%</div>
-                        <p class="tariff-description">Максимальная поддержка и забота</p>
-                    </div>
-                    <ul class="tariff-features">
-                        <li><i class="fas fa-check"></i> Всё из пакета "Коуч плюс"</li>
-                        <li><i class="fas fa-check"></i> Персональный оператор для решения всех вопросов</li>
-                        <li><i class="fas fa-check"></i> Приоритетная поддержка 24/7</li>
-                        <li><i class="fas fa-check"></i> Глубокая аналитика и персональная стратегия роста</li>
-                        <li><i class="fas fa-check"></i> Помощь в создании контента и образа</li>
-                        <li><i class="fas fa-check"></i> Эксклюзивные материалы и встречи</li>
-                        <li><i class="fas fa-check"></i> Выплаты раз в неделю (1 мес.), далее 2 раза/мес.</li>
-                    </ul>
-                    <p class="tariff-note">Выплаты: первый месяц еженедельно, далее два раза в месяц</p>
-                    <a href="https://t.me/sakuradreams_support" class="btn">Выбрать тариф</a>
-                </div>
-            </div>
+    <!-- CALCULATOR -->
+    <section class="card" style="margin:30px auto; max-width:760px; padding:28px" id="calculator">
+      <div class="container">
+        <h2 class="section-title">Калькулятор дохода</h2>
+        <p class="section-sub">Расчитай потенциальный недельный доход после комиссии.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:12px">
+          <label style="flex:1;min-width:180px">
+            <div style="font-weight:600;color:var(--text);margin-bottom:8px">Часов в неделю</div>
+            <input id="hours" type="number" min="0" value="20" style="width:100%;padding:10px;border-radius:12px;border:1px solid rgba(90,61,92,0.07)" />
+          </label>
+
+          <label style="flex:1;min-width:180px">
+            <div style="font-weight:600;color:var(--text);margin-bottom:8px">Ожидаемый часовой заработок (₽)</div>
+            <input id="hourlyRate" type="number" min="0" value="2000" style="width:100%;padding:10px;border-radius:12px;border:1px solid rgba(90,61,92,0.07)" />
+          </label>
+
+          <label style="flex:1;min-width:180px">
+            <div style="font-weight:600;color:var(--text);margin-bottom:8px">Тариф</div>
+            <select id="tariff" style="width:100%;padding:10px;border-radius:12px;border:1px solid rgba(90,61,92,0.07)">
+              <option value="0.2">Всё сама (20%)</option>
+              <option value="0.3" selected>Коуч плюс (30%)</option>
+              <option value="0.4">Личный оператор (40%)</option>
+            </select>
+          </label>
         </div>
+
+        <div style="text-align:center;margin-top:18px">
+          <div style="font-size:14px;color:var(--muted)">Ваш доход в неделю после комиссии</div>
+          <div id="result" style="font-size:28px;font-weight:800;color:var(--accent);margin-top:8px">0 ₽</div>
+        </div>
+      </div>
     </section>
 
-    <section class="calculator">
-        <div class="container">
-            <h2 class="section-title">Калькулятор заработка</h2>
-            <p class="section-subtitle">Рассчитайте ваш потенциальный недельный доход в рублях с учетом выбранного тарифа</p>
-            
-            <div class="calculator-container">
-                <div class="calculator-input">
-                    <label for="hours">Сколько часов в неделю планируете работать:</label>
-                    <input type="number" id="hours" min="0" value="20" oninput="calculateIncome()">
-                </div>
-                
-                <div class="calculator-input">
-                    <label for="hourlyRate">Ожидаемый часовой заработок (руб):</label>
-                    <input type="number" id="hourlyRate" min="0" value="2000" oninput="calculateIncome()">
-                </div>
-                
-                <div class="calculator-input">
-                    <label for="tariff">Выберите тариф:</label>
-                    <select id="tariff" onchange="calculateIncome()">
-                        <option value="0.2">Всё сама (20% комиссия)</option>
-                        <option value="0.3" selected>Коуч плюс (30% комиссия)</option>
-                        <option value="0.4">Личный оператор (40% комиссия)</option>
-                    </select>
-                </div>
-                
-                <div class="calculator-result">
-                    <h3>Ваш заработок в неделю после комиссии:</h3>
-                    <div class="result-amount" id="result">28 000 ₽</div>
-                </div>
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="container">
+        <h2 class="section-title">Отзывы</h2>
+        <p class="section-sub">Что говорят модели</p>
+
+        <div class="testimonials-wrap">
+          <div class="testimonials" id="testimonialsInner">
+            <div class="testimonial card">
+              <img src="https://www.pngmart.com/files/1/Beautiful-Anime-Girl-PNG.png" alt="Аватар" style="width:100%;border-radius:14px;margin-bottom:12px">
+              <div style="font-style:italic;color:var(--muted)">"Работаю с SakuraDreams уже полгода. Поддержка всегда на связи, доход растёт."</div>
+              <div style="margin-top:12px;font-weight:700">Алиса, 21</div>
             </div>
+
+            <div class="testimonial card">
+              <img src="https://www.pngmart.com/files/5/Pastel-Anime-Girl-PNG.png" alt="Аватар 2" style="width:100%;border-radius:14px;margin-bottom:12px">
+              <div style="font-style:italic;color:var(--muted)">"Чувствую себя защищённой — многое объясняют и помогают с приватностью."</div>
+              <div style="margin-top:12px;font-weight:700">Карина, 23</div>
+            </div>
+
+            <div class="testimonial card">
+              <img src="https://www.pngmart.com/files/6/Pastel-Anime-Girl-PNG-File.png" alt="Аватар 3" style="width:100%;border-radius:14px;margin-bottom:12px">
+              <div style="font-style:italic;color:var(--muted)">"С оператором работать легко — он решает техвопросы, я лишь стримлю."</div>
+              <div style="margin-top:12px;font-weight:700">Виктория, 22</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;justify-content:center;margin-top:12px">
+            <button id="prevTest">←</button>
+            <button id="nextTest">→</button>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">Как начать работать?</h2>
-            <p class="section-subtitle">Всего 3 простых шага отделяют тебя от начала карьеры</p>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Напиши в Telegram</h3>
-                    <p>Свяжись с нами через Telegram для консультации и выбора тарифа</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Пройти обучение</h3>
-                    <p>Мы проведем бесплатное обучение и поможем настроить оборудование</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Начать работать</h3>
-                    <p>После обучения ты сможешь сразу приступить к работе и получать доход</p>
-                </div>
-            </div>
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">Вопросы и ответы</h2>
+        <div style="max-width:860px;margin:18px auto">
+          <div class="faq-item">
+            <div class="faq-q">Как проходит обучение?<span>+</span></div>
+            <div class="faq-a">Обучение онлайн: техника, безопасность, поведенческие рекомендации и стратегии роста.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Как платят?<span>+</span></div>
+            <div class="faq-a">Выплаты: первый месяц еженедельно, далее два раза в месяц. Поддерживаем прозрачную статистику.</div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">Отзывы наших моделей</h2>
-            <p class="section-subtitle">Что говорят девушки, которые уже работают с нами</p>
-            
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Работаю с SakuraDreams уже полгода. Ни разу не было проблем с выплатами, поддержка всегда на связи. Зарабатываю в 3 раза больше, чем на предыдущей работе!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar" style="background-color: #ffd1dc;"></div>
-                        <div>
-                            <strong>Алиса, 21 год</strong>
-                            <p>Модель с марта 2023</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Очень нравится забота о безопасности. Чувствую себя защищенной, знаю, что мои данные под надежной защитой. Обучение помогло быстро начать зарабатывать."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar" style="background-color: #ffcc99;"></div>
-                        <div>
-                            <strong>Карина, 23 года</strong>
-                            <p>Модель с января 2023</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Выбрала тариф с личным оператором и не пожалела! Все технические вопросы решает менеджер, я могу сосредоточиться только на работе. Доход стабильно растет."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar" style="background-color: #ff9bb9;"></div>
-                        <div>
-                            <strong>Виктория, 22 года</strong>
-                            <p>Модель с ноября 2022</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- CTA -->
+    <section style="padding:40px 0">
+      <div class="container" style="text-align:center">
+        <div class="card" style="display:inline-block;max-width:820px">
+          <h2 style="margin-top:6px">Готовы начать?</h2>
+          <p style="color:var(--muted)">Присоединяйся к нашему тёплому аниме-сообществу и начни зарабатывать уже сегодня.</p>
+          <a href="https://t.me/sakuradreams_support" class="btn btn-primary">Присоединиться</a>
         </div>
+      </div>
     </section>
+  </main>
 
-    <section class="cta">
-        <div class="container">
-            <h2>Готовы изменить свою жизнь?</h2>
-            <p>Присоединяйтесь к нашему уютному аниме-сообществу прямо сейчас и начните зарабатывать уже сегодня!</p>
-            <a href="https://t.me/sakuradreams_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Присоединиться сейчас</a>
+  <footer>
+    <div class="container">
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+        <div style="font-weight:700">SakuraDreams</div>
+        <div style="color:var(--muted)">© 2023 SakuraDreams. Все права защищены.</div>
+        <div class="socials">
+          <a href="https://t.me/sakuradreams_support">Telegram</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </footer>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>SakuraDreams</h3>
-                    <p>Современная вебкам-студия с аниме-атмосферой и лучшими условиями для работы и развития</p>
-                    <div class="social-icons">
-                        <a href="https://t.me/sakuradreams_support"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Навигация</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#tariffs">Тарифы</a></li>
-                        <li><a href="#benefits">Преимущества</a></li>
-                        <li><a href="#testimonials">Отзывы</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul class="footer-links">
-                        <li><i class="fab fa-telegram"></i> Telegram: @sakuradreams_support</li>
-                        <li><i class="fas fa-clock"></i> Поддержка 24/7</li>
-                        <li><i class="fas fa-envelope"></i> info@sakuradreams.ru</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2023 SakuraDreams. Все права защищены. | Политика конфиденциальности</p>
-            </div>
-        </div>
-    </footer>
+  <!-- floating telegram -->
+  <a class="float-telegram" href="https://t.me/sakuradreams_support">💬 Написать в Telegram</a>
 
-    <script>
-        // Калькулятор дохода
-        function calculateIncome() {
-            const hours = parseInt(document.getElementById('hours').value) || 0;
-            const hourlyRate = parseInt(document.getElementById('hourlyRate').value) || 0;
-            const tariff = parseFloat(document.getElementById('tariff').value);
-            const result = (hours * hourlyRate) * (1 - tariff);
-            document.getElementById('result').textContent = result.toLocaleString('ru-RU') + ' ₽';
+  <script>
+    /* ---------- Calculator ---------- */
+    function calculateIncome() {
+      const hours = parseFloat(document.getElementById('hours').value) || 0;
+      const rate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+      const tariff = parseFloat(document.getElementById('tariff').value) || 0.3;
+      const result = Math.round((hours * rate) * (1 - tariff));
+      document.getElementById('result').textContent = result.toLocaleString('ru-RU') + ' ₽';
+    }
+    document.getElementById('hours').addEventListener('input', calculateIncome);
+    document.getElementById('hourlyRate').addEventListener('input', calculateIncome);
+    document.getElementById('tariff').addEventListener('change', calculateIncome);
+    calculateIncome();
+
+    /* ---------- Simple burger menu (mobile) ---------- */
+    const burger = document.getElementById('burgerBtn');
+    burger.addEventListener('click', () => {
+      // simple mobile nav modal
+      const nav = document.createElement('div');
+      nav.style.position='fixed';
+      nav.style.inset='0';
+      nav.style.background='linear-gradient(180deg,rgba(255,250,250,0.98),rgba(255,240,245,0.96))';
+      nav.style.zIndex='120';
+      nav.innerHTML = '<div style="padding:28px"><a href=\"#\" id=\"closeNav\" style=\"display:inline-block;margin-bottom:18px\">✕ Закрыть</a><div style=\"display:flex;flex-direction:column;gap:12px\">' +
+        '<a href=\"#hero\">Главная</a><a href=\"#about\">О нас</a><a href=\"#tariffs\">Тарифы</a><a href=\"#benefits\">Преимущества</a><a href=\"#testimonials\">Отзывы</a>' +
+        '</div></div>';
+      document.body.appendChild(nav);
+      nav.querySelector('#closeNav').addEventListener('click',(e)=>{e.preventDefault();nav.remove()});
+    });
+
+    /* ---------- Testimonials slider (very simple) ---------- */
+    const tests = document.getElementById('testimonialsInner');
+    let testIndex = 0;
+    function showTest(idx){
+      const width = tests.children[0].getBoundingClientRect().width + 18;
+      tests.style.transform = 'translateX(' + (-idx * width) + 'px)';
+      tests.style.transition = 'transform .5s';
+    }
+    document.getElementById('prevTest').addEventListener('click', ()=>{ testIndex = Math.max(0,testIndex-1); showTest(testIndex)});
+    document.getElementById('nextTest').addEventListener('click', ()=>{ testIndex = Math.min(tests.children.length-1,testIndex+1); showTest(testIndex)});
+
+    /* ---------- FAQ accordion ---------- */
+    document.querySelectorAll('.faq-q').forEach(q=>{
+      q.addEventListener('click', ()=> {
+        const item = q.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+
+    /* ---------- Animated counters (on scroll) ---------- */
+    function animateCount(el, to){
+      const start = 0;
+      const duration = 1200;
+      let startTime = null;
+      function tick(timestamp){
+        if(!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime)/duration, 1);
+        el.textContent = Math.floor(progress * (to - start) + start).toLocaleString('ru-RU');
+        if(progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    const counters = document.querySelectorAll('.count');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting){
+          const el = ent.target;
+          const to = parseInt(el.dataset.target,10) || 0;
+          animateCount(el, to);
+          io.unobserve(el);
         }
+      });
+    }, {threshold:0.3});
+    counters.forEach(c=>io.observe(c));
 
-        // Прокрутка к началу при клике на логотип
-        document.getElementById('logoLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+    /* ---------- Intersection fade-in for cards ---------- */
+    const cards = document.querySelectorAll('.card, .stat, .testimonial');
+    const io2 = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.style.opacity = 0;
+          e.target.style.transform = 'translateY(14px)';
+          setTimeout(()=>{ e.target.style.transition = 'opacity .8s, transform .8s'; e.target.style.opacity=1; e.target.style.transform='translateY(0)'; },120);
+          io2.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.12});
+    cards.forEach(c=> io2.observe(c));
 
-        // Анимация появления элементов при прокрутке
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+    /* ---------- Smooth scroll for internal links ---------- */
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href === '#') return;
+        const el = document.querySelector(href);
+        if(el){
+          e.preventDefault();
+          window.scrollTo({ top: el.offsetTop - 60, behavior:'smooth' });
+        }
+      });
+    });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+    /* ---------- Falling sakura petals (canvas) ---------- */
+    (function(){
+      const canvas = document.getElementById('petalCanvas');
+      const ctx = canvas.getContext('2d');
+      let W = canvas.width = innerWidth;
+      let H = canvas.height = innerHeight;
+      window.addEventListener('resize', ()=>{ W = canvas.width = innerWidth; H = canvas.height = innerHeight; });
 
-        // Наблюдаем за карточками
-        document.querySelectorAll('.feature-card, .benefit-card, .tariff-card, .testimonial-card').forEach(card => {
-            observer.observe(card);
-        });
+      class Petal {
+        constructor(){
+          this.reset();
+        }
+        reset(){
+          this.x = Math.random() * W;
+          this.y = -10 - Math.random()*H;
+          this.size = 6 + Math.random()*18;
+          this.speedY = 0.6 + Math.random()*1.4;
+          this.speedX = Math.random()*1.2 - 0.6;
+          this.angle = Math.random() * Math.PI*2;
+          this.spin = (Math.random()*0.02) * (Math.random()>0.5?1:-1);
+          this.alpha = 0.6 + Math.random()*0.4;
+          this.color = `rgba(255, ${(190 + Math.floor(Math.random()*40))}, ${(180 + Math.floor(Math.random()*60))}, ${this.alpha})`; // peachy-pink
+        }
+        update(){
+          this.y += this.speedY;
+          this.x += this.speedX + Math.sin(this.angle)*0.3;
+          this.angle += this.spin;
+          if(this.y > H + 30) this.reset();
+        }
+        draw(){
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.angle);
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.moveTo(0, -this.size*0.5);
+          ctx.quadraticCurveTo(this.size*0.6, -this.size*0.6, this.size*0.5, 0);
+          ctx.quadraticCurveTo(this.size*0.2, this.size*0.9, 0, this.size*0.8);
+          ctx.quadraticCurveTo(-this.size*0.2, this.size*0.9, -this.size*0.5, 0);
+          ctx.quadraticCurveTo(-this.size*0.6, -this.size*0.6, 0, -this.size*0.5);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
 
-        // Плавная прокрутка для навигации
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+      const petals = [];
+      for(let i=0;i<40;i++) petals.push(new Petal());
 
-        // Инициализация калькулятора при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
-            calculateIncome();
-        });
+      function anim(){
+        ctx.clearRect(0,0,W,H);
+        for(const p of petals){ p.update(); p.draw(); }
+        requestAnimationFrame(anim);
+      }
+      anim();
+    })();
 
-        // FAQ функциональность
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
-            });
-        });
-    </script>
+    /* ---------- small accessibility & logo scroll top ---------- */
+    document.getElementById('logoLink').addEventListener('click', e=>{ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}) });
+  </script>
 </body>
 </html>
