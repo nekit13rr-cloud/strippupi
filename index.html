@@ -175,16 +175,46 @@ footer { background: rgba(255,255,255,0.8); padding: 60px 0 30px; border-top: 1p
    (keeps original structure & functionality)
    ============================ */
 
-/* 🌈 Animated full-page gradient (subtle, complements existing colors) */
+/* 🌈 Фон — теперь мягкий и без "раздвига" */
 body {
-  background: linear-gradient(120deg, #ffdce6 0%, #ffe7cc 25%, #fff0f6 50%, #f3e8ff 75%, #ffdce6 100%);
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(270deg, #ffe5ec, #ffd6e0, #e7c6ff);
   background-size: 400% 400%;
-  animation: bgShift 20s ease-in-out infinite;
+  animation: gradientShift 20s ease infinite;
 }
-@keyframes bgShift {
+@keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* ✨ Светящиеся круги */
+.hero::before,
+.hero::after,
+.about::before,
+.benefits::before,
+.cta::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.hero::before {
+  top: 10%;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 153, 204, 0.3);
+}
+.hero::after {
+  bottom: 10%;
+  right: -50px;
+  width: 220px;
+  height: 220px;
+  background: rgba(204, 153, 255, 0.25);
 }
 
 /* ✨ Soft glowing blobs (added as :after / :before where original didn't use them) */
