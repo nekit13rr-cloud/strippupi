@@ -17,6 +17,7 @@
       --white: #ffffff;
       --gradient: linear-gradient(135deg, var(--light-pink) 0%, var(--peach) 100%);
     }
+
     *{margin:0;padding:0;box-sizing:border-box;}
     body{
       font-family: 'Montserrat', sans-serif;
@@ -26,59 +27,102 @@
       overflow-x:hidden;
     }
     .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+
     /* Header */
-header {
-  padding: 15px 30px;
-  background: rgba(255, 255, 255, 0.12); /* лёгкая прозрачность */
-  backdrop-filter: blur(12px);            /* стеклянный эффект */
-  -webkit-backdrop-filter: blur(12px);    /* поддержка Safari */
-  border-radius: 16px;                    /* скруглённые углы */
-  position: fixed;                        /* фиксируем сверху */
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1200px;
-  z-index: 1000;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* мягкая тень */
-}
-.nav-links a {
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-weight: 600;
-  color: #fff;
-  background-size: cover;
-  background-position: center;
-  transition: all 0.3s ease;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-}
+    header {
+      padding: 15px 30px;
+      background: rgba(255, 255, 255, 0.12); /* лёгкая прозрачность */
+      backdrop-filter: blur(12px);            /* стеклянный эффект */
+      -webkit-backdrop-filter: blur(12px);    /* поддержка Safari */
+      border-radius: 16px;                    /* скруглённые углы */
+      position: fixed;                        /* фиксируем сверху */
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      z-index: 1000;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* мягкая тень */
+    }
 
-/* Главная */
-.nav-links a:nth-child(1) {
-  background-image: url("https://i.imgur.com/YuKQ9vS.jpg");
-}
+    /* добавленные стили для корректного отображения шапки */
+    .header-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
 
-/* О нас */
-.nav-links a:nth-child(2) {
-  background-image: url("https://i.imgur.com/zkx2Azb.jpeg");
-}
+    .logo{
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      font-weight:700;
+      color:var(--dark-pink);
+      display:flex;
+      align-items:center;
+      cursor:pointer;
+      text-decoration:none;
+    }
+    .logo i{margin-right:10px;font-size:26px;color:var(--dark-pink);}
 
-/* Тарифы */
-.nav-links a:nth-child(3) {
-  background-image: url("https://i.imgur.com/sv6RVRL.jpeg");
-}
+    .nav-links{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
 
-/* Контакты */
-.nav-links a:nth-child(4) {
-  background-image: url("https://i.imgur.com/4AiXzf8.jpeg");
-}
+    .nav-links a {
+      display:inline-block;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #fff; /* белые ссылки поверх картинок */
+      background-size: cover;
+      background-position: center;
+      transition: all 0.3s ease;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+      text-decoration: none;
+      min-width: 92px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
 
-.nav-links a:hover {
-  filter: brightness(1.2);
-  transform: translateY(-2px);
-}
+    /* фоны для пунктов меню (ты просил фоны у каждой кнопки) */
+    .nav-links a:nth-child(1) {
+      background-image: url("https://i.imgur.com/YuKQ9vS.jpg");
+    }
+    .nav-links a:nth-child(2) {
+      background-image: url("https://i.imgur.com/zkx2Azb.jpeg");
+    }
+    .nav-links a:nth-child(3) {
+      background-image: url("https://i.imgur.com/sv6RVRL.jpeg");
+    }
+    .nav-links a:nth-child(4) {
+      background-image: url("https://i.imgur.com/4AiXzf8.jpeg");
+    }
+
+    .nav-links a:hover {
+      filter: brightness(1.2);
+      transform: translateY(-2px);
+    }
+
+    .header-btn{
+      padding:12px 25px;
+      background:var(--dark-pink);
+      color:var(--white);
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:600;
+      transition:all .3s;
+      box-shadow:0 5px 15px rgba(255,77,141,0.3);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .header-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(255,77,141,0.4);}
+
     /* Hero Section */
-    .hero{display:flex;align-items:center;min-height:90vh;padding:60px 0;gap:50px;position:relative;overflow:hidden;}
+    .hero{display:flex;align-items:center;min-height:90vh;padding:60px 0;gap:50px;position:relative;overflow:hidden;margin-top:30px;}
     /* big hero background image (with overlay for readable text) */
     .hero::before{
       content:'';
@@ -106,18 +150,21 @@ header {
     .stat-item{display:flex;flex-direction:column;}
     .stat-value{font-size:2.2rem;font-weight:700;color:var(--dark-pink);}
     .stat-label{font-size:.95rem;color:var(--light-text);}
+
     /* Image Upload Section */
     .image-upload{text-align:center;margin:20px 0;padding:20px;background:rgba(255,255,255,0.5);border-radius:15px;border:2px dashed var(--dark-pink);}
     .image-preview{width:100%;max-width:400px;height:250px;border-radius:15px;margin:15px auto;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(255,255,255,0.5);}
     .image-preview img{max-width:100%;max-height:100%;object-fit:cover;border-radius:10px;}
     .upload-btn{display:inline-block;padding:12px 25px;background:var(--dark-pink);color:var(--white);border-radius:5px;cursor:pointer;margin-top:10px;transition:all .3s;}
     .upload-btn:hover{background:var(--text-color);}
+
     /* About Section */
     .about{padding:100px 0;background: rgba(255,255,255,0.6);backdrop-filter: blur(8px);border-radius:20px;margin-top:30px;}
     .about-content{display:flex;gap:40px;align-items:center;flex-wrap:wrap;}
     .about-text{flex:1;min-width:300px;}
     .about-image{flex:1;min-width:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,0.1);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));}
     .about-image img{width:100%;height:100%;display:block;object-fit:cover;}
+
     /* Features / Benefits */
     .features{padding:60px 0;}
     .section-title{text-align:center;font-family:'Playfair Display', serif;font-size:2.6rem;margin-bottom:20px;color:var(--text-color);}
@@ -127,10 +174,10 @@ header {
     .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:var(--gradient);z-index:0;opacity:0.65;}
     .feature-card:hover, .benefit-card:hover, .tariff-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,0.12);}
     .feature-icon, .benefit-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;background-size:cover;background-position:center;position:relative;z-index:1;overflow:hidden;border:3px solid rgba(255,255,255,0.6);}
-    /* fallback icon styling if image not set */
     .feature-icon i, .benefit-icon i{font-size:26px;color:var(--dark-pink);}
     .feature-card h3, .benefit-card h3, .tariff-card h3{font-size:1.25rem;margin-bottom:12px;color:var(--text-color);position:relative;z-index:1;}
     .feature-card p, .benefit-card p, .tariff-card p{color:var(--light-text);position:relative;z-index:1;}
+
     /* Tariffs */
     .tariffs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:30px;}
     .tariff-card.popular{border:2px solid var(--dark-pink);transform:scale(1.03);}
@@ -142,6 +189,7 @@ header {
     .tariff-features{list-style:none;margin-bottom:18px;padding-left:0;text-align:left;}
     .tariff-features li{margin-bottom:10px;display:flex;align-items:center;}
     .tariff-features li i{color:var(--dark-pink);margin-right:8px;}
+
     /* Calculator */
     .calculator{padding:100px 0;background: rgba(255,255,255,0.6);backdrop-filter: blur(8px);border-radius:20px;margin-top:30px;}
     .calculator-container{max-width:600px;margin:0 auto;background:var(--white);padding:30px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.07);}
@@ -152,6 +200,7 @@ header {
     .calculator-result{background:var(--gradient);padding:18px;border-radius:10px;text-align:center;margin-top:16px;}
     .calculator-result h3{margin-bottom:10px;color:var(--text-color);}
     .result-amount{font-size:1.6rem;font-weight:700;color:var(--dark-pink);}
+
     /* How it works */
     .how-it-works{padding:60px 0;}
     .steps{display:flex;justify-content:space-between;margin-top:30px;position:relative;gap:20px;}
@@ -161,10 +210,12 @@ header {
     .step-number:after{content:'';position:absolute;width:82px;height:82px;border-radius:50%;border:2px solid var(--light-pink);top:-5px;left:-5px;}
     .step h3{font-size:1.15rem;margin-bottom:10px;color:var(--text-color);}
     .step p{color:var(--light-text);}
+
     /* CTA */
     .cta{background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6)), url('https://i.imgur.com/bwEtE25.jpeg') no-repeat center center; background-size:cover; border-radius:18px; padding:56px 40px; text-align:center; margin:60px 0; box-shadow:0 10px 30px rgba(0,0,0,0.07); position:relative; overflow:hidden;}
     .cta h2{font-family:'Playfair Display', serif;font-size:2.4rem;margin-bottom:12px;color:var(--text-color);}
     .cta p{font-size:1.05rem;margin-bottom:20px;color:var(--light-text);max-width:700px;margin-left:auto;margin-right:auto;}
+
     /* Footer */
     footer{background: rgba(255,255,255,0.9);padding:40px 0 20px;border-top:1px solid rgba(255,255,255,0.6);}
     .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:20px;}
@@ -178,6 +229,7 @@ header {
     .social-icons a{width:40px;height:40px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--dark-pink);font-size:18px;transition:transform .3s;}
     .social-icons a:hover{transform:translateY(-5px);}
     .footer-bottom{text-align:center;padding-top:16px;border-top:1px solid rgba(255,255,255,0.6);color:var(--light-text);font-size:0.9rem;}
+
     /* Responsive */
     @media (max-width:992px){
       .hero{flex-direction:column;text-align:center;padding:40px 0;}
@@ -186,7 +238,7 @@ header {
       .steps{flex-direction:column;gap:30px;}
       .steps:before{display:none;}
       .about-content{flex-direction:column;}
-      .nav-links{display:none;}
+      .nav-links{display:none;} /* при маленьком экране можно показать бургера — пока скрываю */
     }
     @media (max-width:768px){
       .hero h1{font-size:2.1rem;}
@@ -196,6 +248,7 @@ header {
       .cta h2{font-size:1.6rem;}
       .tariff-card.popular::before{top:12px;right:-28px;font-size:0.7rem;padding:5px 28px;}
     }
+
     /* Animation */
     @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
     .animated{animation:fadeIn 0.9s ease-out;}
