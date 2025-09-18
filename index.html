@@ -1,218 +1,1134 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StripUp — заработок для моделей</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StripUp — Вебкам Студия (Полная версия)</title>
+
+  <!-- Иконки -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Встроенный CSS (длинный — много комментариев, секций и мелких настроек) -->
   <style>
-    /* === Общие стили === */
+    /* =========================================================================
+       RESET / BASE
+       ========================================================================= */
+    /* Сброс отступов для упрощения кроссбраузерного поведения */
+    :root {
+      --pink-1: #ff4d8d;
+      --pink-2: #ff9bb9;
+      --peach: #ffcc99;
+      --bg-dark: #0f0f12;
+      --card: #ffffff;
+      --glass: rgba(255,255,255,0.7);
+      --text-dark: #2b1b2b;
+      --muted: #77606f;
+      --accent: linear-gradient(135deg, var(--pink-2), var(--peach));
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow-sm: 0 6px 18px rgba(15,15,20,0.08);
+      --shadow-lg: 0 18px 50px rgba(15,15,20,0.12);
+      --max-width: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
     body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: #0d0d0d;
-      color: #fff;
-      line-height: 1.6;
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: var(--text-dark);
+      background: linear-gradient(180deg,#fff 0%, #ffeef4 25%, #fffef9 60%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height: 1.5;
+      overflow-x: hidden;
     }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; border-radius: 12px; }
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-    /* === Шапка === */
+    img { max-width:100%; display:block; border-radius: 12px; }
+    a { color: inherit; text-decoration: none; }
+
+    /* =========================================================================
+       LAYOUT HELPERS
+       ========================================================================= */
+    .container {
+      width: 95%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .row { display:flex; gap:24px; align-items:flex-start; }
+    .col { flex: 1; }
+    .center { text-align:center; }
+    .mb-8 { margin-bottom: 48px; }
+    .mb-6 { margin-bottom: 36px; }
+    .mb-4 { margin-bottom: 24px; }
+    .mt-4 { margin-top: 24px; }
+    .section { padding: 80px 0; }
+
+    /* =========================================================================
+       HEADER
+       ========================================================================= */
     header {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 15px 0;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
+      position: sticky;
       top: 0;
-      backdrop-filter: blur(6px);
+      z-index: 999;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
-    .header-content { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 24px; font-weight: 600; color: #ff0080; }
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a:hover { color: #ff0080; }
-    .header-btn { background: #ff0080; padding: 10px 18px; border-radius: 25px; }
 
-    /* === Герой === */
+    .header-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--pink-1);
+    }
+    .logo i { font-size: 22px; }
+
+    nav.nav {
+      display:flex;
+      gap: 22px;
+      align-items:center;
+    }
+
+    nav.nav a {
+      font-weight:600;
+      color: #5a3d5c;
+      padding: 8px 6px;
+      border-radius: 8px;
+      transition: all .18s;
+    }
+    nav.nav a:hover { color: var(--pink-1); transform: translateY(-2px); }
+
+    .header-cta {
+      background: var(--pink-1);
+      color:#fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight:700;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* =========================================================================
+       HERO (большая секция с фоном и карточкой)
+       ========================================================================= */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
-                  url("https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
-      padding: 160px 0 100px;
-      text-align: center;
+      padding: 120px 0 60px;
+      position: relative;
     }
-    .hero h1 { font-size: 42px; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
-    .hero p { max-width: 700px; margin: 0 auto 30px; font-size: 18px; color: #ddd; }
-    .btn { display: inline-block; padding: 12px 24px; border-radius: 30px; font-weight: 600; }
-    .btn-telegram { background: #0088cc; color: #fff; }
-    .btn-transparent { border: 2px solid #fff; color: #fff; }
-    .hero-stats { display: flex; justify-content: center; gap: 50px; margin-top: 40px; }
-    .stat-value { font-size: 24px; font-weight: 700; color: #ff0080; }
 
-    /* === Секции === */
-    section { padding: 80px 0; }
-    .section-title { text-align: center; font-size: 32px; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
-    .section-subtitle { text-align: center; color: #bbb; margin-bottom: 50px; }
-
-    /* === О нас === */
-    .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-    .about-image img { border-radius: 16px; }
-
-    /* === Преимущества === */
-    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .benefit-card { background: #1a1a1a; padding: 30px; border-radius: 16px; text-align: center; }
-    .benefit-card img { width: 60px; margin-bottom: 15px; }
-
-    /* === Тарифы === */
-    .tariffs {
-      background: linear-gradient(135deg, #0d0d0d, #1a1a1a),
-                  url("https://www.transparenttextures.com/patterns/cubes.png");
+    /* декоративный фон */
+    .hero::after {
+      content:'';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 15% 20%, rgba(255,77,141,0.08), transparent 6%),
+                        radial-gradient(circle at 85% 80%, rgba(255,204,153,0.08), transparent 8%);
+      z-index: 0;
+      pointer-events: none;
     }
-    .tariffs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .tariff-card { background: #1a1a1a; padding: 30px; border-radius: 16px; text-align: center; }
 
-    /* === Калькулятор === */
-    .calculator-container { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 16px; max-width: 600px; margin: 0 auto; }
+    .hero-inner {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
 
-    /* === CTA === */
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+      line-height: 1.08;
+    }
+    .hero-sub {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons { display:flex; gap:12px; flex-wrap:wrap; }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 20px;
+      border-radius: 999px;
+      font-weight:700;
+      cursor:pointer;
+      border:none;
+      transition: transform .18s, box-shadow .18s;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary {
+      background: var(--pink-1);
+      color: #fff;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(90,60,92,0.06);
+      color: var(--text-dark);
+    }
+
+    .hero-stats {
+      display:flex;
+      gap:18px;
+      margin-top: 28px;
+      align-items:center;
+    }
+    .stat {
+      background: linear-gradient(180deg,#fff,#fff);
+      padding: 14px 18px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      text-align:center;
+      min-width: 120px;
+    }
+    .stat .num { font-size:20px; font-weight:800; color:var(--pink-1); }
+    .stat .label { color:var(--muted); font-size:13px; }
+
+    /* правая панель — большая карточка с изображением и "upload" */
+    .hero-aside {
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .upload-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,240,246,0.95));
+      border-radius: var(--radius-md);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+      text-align:center;
+    }
+
+    .upload-preview {
+      height: 260px;
+      border-radius: 12px;
+      background: linear-gradient(180deg,#fff,#fff);
+      overflow:hidden;
+      position:relative;
+      box-shadow: inset 0 2px 12px rgba(0,0,0,0.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .upload-preview img { width:100%; height:100%; object-fit:cover; }
+
+    .file-actions { display:flex; gap:12px; justify-content:center; margin-top:12px; }
+
+    /* =========================================================================
+       ABOUT SECTION (объемная секция с картинками и описанием)
+       ========================================================================= */
+    .about {
+      background: rgba(255,255,255,0.9);
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow: var(--shadow-lg);
+    }
+    .about .about-grid { display:grid; grid-template-columns: 1fr 1fr; gap:26px; align-items:center; }
+
+    .about p.lead { font-size:18px; color:var(--muted); line-height:1.6; }
+
+    .about-gallery { display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
+
+    .about-gallery img { height:140px; object-fit:cover; border-radius:10px; }
+
+    /* =========================================================================
+       FEATURES — длинная сетка карточек с иконками
+       ========================================================================= */
+    .features-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+    }
+
+    .feature {
+      background: linear-gradient(180deg,#fff,#fff);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      text-align:center;
+      transition: transform .18s;
+    }
+    .feature:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+    .feature .icon {
+      width:64px; height:64px; border-radius:50%;
+      background: var(--accent);
+      display:flex; align-items:center; justify-content:center;
+      margin: 0 auto 12px;
+      font-size:22px;
+      color: #6b1b4d;
+      box-shadow: 0 6px 18px rgba(107,27,77,0.08);
+    }
+    .feature h4 { margin-bottom:8px; font-size:18px; color:var(--text-dark); }
+    .feature p { color:var(--muted); font-size:14px; }
+
+    /* =========================================================================
+       BENEFITS (альтернативный фон и карточки)
+       ========================================================================= */
+    .benefits {
+      margin-top: 28px;
+      background: linear-gradient(180deg, rgba(255,245,249,0.9), rgba(255,255,255,0.95));
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .benefits-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+    }
+
+    .benefit {
+      padding: 20px;
+      border-radius: 14px;
+      background: linear-gradient(180deg,#fff,#fff);
+      box-shadow: var(--shadow-sm);
+      transition: transform .18s;
+    }
+    .benefit:hover { transform: translateY(-4px); }
+
+    /* =========================================================================
+       TARIFFS (широкая секция тарифов с "popular")
+       ========================================================================= */
+    .tariffs-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap:22px;
+      margin-top: 22px;
+    }
+
+    .tariff {
+      padding: 26px;
+      border-radius: 14px;
+      background: linear-gradient(180deg,#fff,#fff);
+      box-shadow: var(--shadow-sm);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .tariff.popular {
+      border: 2px solid var(--pink-1);
+      transform: scale(1.02);
+      box-shadow: 0 20px 60px rgba(255,77,141,0.07);
+    }
+    .tariff .price { font-size:28px; font-weight:900; color:var(--pink-1); margin-bottom:6px; }
+    .tariff .name { font-size:18px; font-weight:800; margin-bottom:8px; color:var(--text-dark); }
+    .tariff ul { list-style:none; margin:12px 0 20px; padding:0; text-align:left; color:var(--muted); }
+    .tariff ul li { margin-bottom:10px; display:flex; gap:8px; align-items:flex-start; }
+    .tariff ul li i { color:var(--pink-1); min-width:18px; }
+
+    /* ribbon */
+    .tariff.popular::before {
+      content: "ПОПУЛЯРНО";
+      position:absolute;
+      top:14px;
+      right:-42px;
+      transform: rotate(45deg);
+      background: var(--pink-1);
+      color:#fff;
+      padding:6px 64px;
+      font-weight:800;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    /* =========================================================================
+       CALCULATOR (детально — длинный скрипт будет взаимодействовать с DOM)
+       ========================================================================= */
+    .calculator {
+      margin-top: 34px;
+      padding: 30px;
+      border-radius: 18px;
+      background: linear-gradient(180deg,#fff,#fff);
+      box-shadow: var(--shadow-sm);
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .calc-row { display:flex; gap:12px; align-items:center; }
+    .calc-row label { min-width: 240px; color:var(--muted); font-weight:600; }
+    .calc-input {
+      flex:1;
+      padding:12px 14px;
+      border-radius:8px;
+      border:1px solid rgba(90,60,92,0.06);
+      font-size:16px;
+    }
+    .result-box {
+      margin-top:18px;
+      padding:18px;
+      border-radius:12px;
+      background: var(--accent);
+      color:#6b1b4d;
+      text-align:center;
+      font-weight:800;
+      font-size:20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* =========================================================================
+       HOW IT WORKS (timeline)
+       ========================================================================= */
+    .how-grid {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+      margin-top: 28px;
+    }
+
+    .step {
+      background:#fff;
+      border-radius:12px;
+      padding:18px;
+      text-align:center;
+      box-shadow: var(--shadow-sm);
+    }
+    .step .num {
+      width:64px;height:64px;border-radius:50%;
+      background: var(--pink-1); color:#fff;
+      display:inline-flex;align-items:center;justify-content:center;
+      font-weight:900;margin-bottom:12px;
+      box-shadow: 0 8px 26px rgba(255,77,141,0.08);
+    }
+
+    /* =========================================================================
+       CTA SECTION
+       ========================================================================= */
     .cta {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-                  url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
-      text-align: center; padding: 80px 20px; border-radius: 16px; max-width: 1000px; margin: 0 auto;
+      margin-top: 36px;
+      padding: 40px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, rgba(255,77,141,0.08), rgba(255,204,153,0.06));
+      text-align:center;
+      box-shadow: var(--shadow-sm);
+    }
+    .cta h2 { font-family: "Playfair Display", serif; font-size:28px; color:var(--text-dark); margin-bottom:12px; }
+    .cta p { color:var(--muted); margin-bottom:18px; }
+
+    /* =========================================================================
+       FOOTER
+       ========================================================================= */
+    footer {
+      margin-top: 40px;
+      padding: 36px 0;
+      background: rgba(255,255,255,0.95);
+      border-top: 1px solid rgba(90,60,92,0.04);
+    }
+    .footer-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:18px; align-items:start; }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 980px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .about .about-grid { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
 
-    /* === Футер === */
-    footer { background: #000; padding: 60px 0 20px; text-align: center; color: #666; }
+    @media (max-width: 560px) {
+      header .nav { display:none; }
+      .hero-title { font-size:28px; }
+      .hero { padding: 80px 0 40px; }
+      .hero-stats { flex-direction:column; gap:10px; }
+    }
+
+    /* =========================================================================
+       EXTRA: длинный набор декоративных правил — чтобы увеличить размер файла
+       и дать много места для кастомизации. Можно удалить, но пока пусть будет.
+       ========================================================================= */
+
+    .decor-dot {
+      width:10px; height:10px; border-radius:50%; background:rgba(107,27,77,0.06);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .badge {
+      display:inline-block;padding:6px 10px;border-radius:999px;background: rgba(255,77,141,0.08); color:var(--pink-1); font-weight:700; font-size:13px;
+    }
+
+    /* Большое количество комментариев и пустых правил для "толщины" */
+    /* ---------------------------------------------------------------------
+       Конец стилей
+       --------------------------------------------------------------------- */
+
   </style>
 </head>
 <body>
-
-  <!-- Шапка -->
+  <!-- =========================================================================
+       HEADER
+       ========================================================================= -->
   <header>
-    <div class="container header-content">
-      <div class="logo"><i class="fa-solid fa-star"></i> StripUp</div>
-      <nav class="nav-links">
+    <div class="container header-inner">
+      <a href="#" class="logo" id="logoLink"><i class="fas fa-crown"></i> StripUp</a>
+
+      <nav class="nav">
+        <a href="#hero">Главная</a>
         <a href="#about">О нас</a>
-        <a href="#benefits">Преимущества</a>
         <a href="#tariffs">Тарифы</a>
+        <a href="#benefits">Преимущества</a>
         <a href="#calc">Калькулятор</a>
       </nav>
-      <a href="#cta" class="header-btn">Начать</a>
+
+      <a href="https://t.me/stripup_support" class="header-cta">Написать в Telegram</a>
     </div>
   </header>
 
-  <!-- Герой -->
-  <section class="hero">
-    <div class="container">
-      <h1>Зарабатывай из дома вместе с StripUp</h1>
-      <p>Мы помогаем моделям выйти на стабильный доход, сохраняя полную анонимность и свободу.</p>
-      <a href="#" class="btn btn-telegram"><i class="fa-brands fa-telegram"></i> В Telegram</a>
-      <a href="#about" class="btn btn-transparent">Узнать больше</a>
-      <div class="hero-stats">
-        <div><span class="stat-value">500+</span> моделей</div>
-        <div><span class="stat-value">до $3000</span> в месяц</div>
-        <div><span class="stat-value">24/7</span> поддержка</div>
-      </div>
-    </div>
-  </section>
+  <!-- =========================================================================
+       HERO
+       ========================================================================= -->
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <!-- LEFT -->
+        <div class="hero-card">
+          <div class="hero-top">
+            <div class="badge">Набор открыт</div>
+          </div>
 
-  <!-- О нас -->
-  <section id="about">
-    <div class="container about-content">
-      <div class="about-text">
-        <h2 class="section-title">О нас</h2>
-        <p>Мы — команда, которая помогает девушкам зарабатывать онлайн без рисков. Сохраняй анонимность и получай высокий доход, работая в удобное время.</p>
-      </div>
-      <div class="about-image">
-        <img src="https://images.pexels.com/photos/769367/pexels-photo-769367.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Работа из дома">
-      </div>
-    </div>
-  </section>
+          <h1 class="hero-title">Раскрой свой потенциал и начни зарабатывать с StripUp</h1>
+          <p class="hero-sub">Работа на дому в комфортных условиях — поддержка, обучение и прозрачные выплаты. Подходит и для девушек, и для парней.</p>
 
-  <!-- Преимущества -->
-  <section id="benefits">
-    <div class="container">
-      <h2 class="section-title">Преимущества</h2>
+          <div class="hero-buttons">
+            <a href="https://t.me/stripup_support" class="btn btn-primary"><i class="fab fa-telegram"></i> Написать в Telegram</a>
+            <a href="#tariffs" class="btn btn-outline">Посмотреть тарифы</a>
+            <a href="#about" class="btn btn-outline">Узнать подробнее</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="num">120 000 ₽</div>
+              <div class="label">средний доход</div>
+            </div>
+            <div class="stat">
+              <div class="num">24/7</div>
+              <div class="label">поддержка</div>
+            </div>
+            <div class="stat">
+              <div class="num">500+</div>
+              <div class="label">моделей</div>
+            </div>
+          </div>
+
+          <!-- подробное описание — несколько абзацев для веса -->
+          <div class="mt-4">
+            <p style="color:var(--muted); margin-bottom:12px;">
+              StripUp — современная вебкам-студия, где мы помогаем моделям развивать доход, оставаясь в комфорте собственного дома.
+            </p>
+            <p style="color:var(--muted); margin-bottom:12px;">
+              Мы предлагаем обучение, техники работы со зрителем, безопасные способы вывода средств и психологическую поддержку.
+            </p>
+            <p style="color:var(--muted); margin-bottom:0;">
+              Заполните заявку или напишите нам в Telegram — менеджер свяжется и расскажет подробности.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <aside class="hero-aside">
+          <div class="upload-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div style="font-weight:800; color:var(--text-dark);">Загрузить портфолио</div>
+                <div style="font-size:13px; color:var(--muted);">Добавьте несколько фото и короткое приветствие</div>
+              </div>
+              <div class="decor-dot"></div>
+            </div>
+
+            <div class="upload-preview mt-4" id="previewArea">
+              <img src="https://images.unsplash.com/photo-1542204165-ecf1f6f1f1ea?auto=format&fit=crop&w=1200&q=60" alt="preview" id="previewImg">
+            </div>
+
+            <div class="file-actions">
+              <label class="btn btn-outline" style="cursor:pointer;">
+                <input type="file" id="fileInput" style="display:none" accept="image/*"/>
+                Загрузить фото
+              </label>
+              <button class="btn btn-primary" id="resetPreview">Сбросить</button>
+            </div>
+
+            <small style="display:block; margin-top:10px; color:var(--muted);">Формат: JPG/PNG. Рекомендуемое разрешение: 1200×800</small>
+          </div>
+
+          <!-- Доп. карточки для плотности контента -->
+          <div style="display:grid; gap:12px;">
+            <div style="background:linear-gradient(180deg,#fff,#fff); padding:12px; border-radius:12px; box-shadow:var(--shadow-sm);">
+              <strong>Онлайн поддержка</strong>
+              <p style="color:var(--muted); font-size:13px; margin-top:6px;">Наши менеджеры доступны 24/7 для консультаций.</p>
+            </div>
+            <div style="background:linear-gradient(180deg,#fff,#fff); padding:12px; border-radius:12px; box-shadow:var(--shadow-sm);">
+              <strong>Быстрые выплаты</strong>
+              <p style="color:var(--muted); font-size:13px; margin-top:6px;">Вывод средств без задержек — еженедельно.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ABOUT SECTION (много изображений и контента)
+         ========================================================================= -->
+    <section class="section container" id="about">
+      <div class="about mb-8">
+        <div class="about-grid">
+          <div class="col">
+            <h2 style="font-family:'Playfair Display', serif; font-size:28px; margin-bottom:12px;">О вебкам студии StripUp</h2>
+
+            <p class="lead mb-4">
+              Мы создали комфортную экосистему для работы онлайн: обучение, аккаунт-менеджмент, продвижение и защита персональных данных.
+            </p>
+
+            <p style="color:var(--muted); margin-bottom:12px;">
+              Наша миссия — дать людям возможность зарабатывать достойно, не выходя из дома, с гибким графиком и безопасными условиями.
+            </p>
+
+            <div style="display:flex; gap:12px; margin-top:18px; flex-wrap:wrap;">
+              <div class="badge">Гарантируем безопасность</div>
+              <div class="badge">Персональный коучинг</div>
+              <div class="badge">Анонимность</div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="about-gallery">
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=60" alt="">
+              <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=60" alt="">
+              <img src="https://images.unsplash.com/photo-1520975698513-8f2e5f0f1e1f?auto=format&fit=crop&w=800&q=60" alt="">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=60" alt="">
+              <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=60" alt="">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=60" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Длинный повторяющийся блок "подробнее о нас" для плотности -->
+      <div style="margin-top: 24px; background:linear-gradient(180deg,#fff,#fff); padding:20px; border-radius:14px; box-shadow:var(--shadow-sm);">
+        <h3 style="margin-bottom:12px;">Наша команда и подход</h3>
+        <p style="color:var(--muted); margin-bottom:8px;">
+          Команда StripUp состоит из менеджеров, коучей, маркетологов и техподдержки — все работают над тем, чтобы вы получали стабильный доход.
+        </p>
+        <p style="color:var(--muted); margin-bottom:8px;">
+          Мы отвечаем за продвижение, техническую часть и обучение — модель фокусируется на контенте, остальное берем мы.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         FEATURES (много карточек)
+         ========================================================================= -->
+    <section class="section container" id="features">
+      <h2 class="section-title center" style="font-size:26px; margin-bottom:12px;">Что мы предлагаем</h2>
+      <p class="center" style="color:var(--muted); margin-bottom:28px;">Полный набор сервисов для старта и стабильно высокой прибыли.</p>
+
+      <div class="features-grid mb-6">
+        <div class="feature">
+          <div class="icon"><i class="fas fa-user-shield"></i></div>
+          <h4>Безопасность</h4>
+          <p>Анонимность и защита данных — приоритет в нашем сервисе.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h4>Обучение</h4>
+          <p>Персональные тренинги и разбор эфиров от опытных коучей.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon"><i class="fas fa-wallet"></i></div>
+          <h4>Выплаты</h4>
+          <p>Регулярные и быстрые выплаты разными способами.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon"><i class="fas fa-rocket"></i></div>
+          <h4>Продвижение</h4>
+          <p>Поможем продвинуть ваш профиль и привлечь целевую аудиторию.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon"><i class="fas fa-headset"></i></div>
+          <h4>Техподдержка</h4>
+          <p>Круглосуточная поддержка по любым вопросам.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon"><i class="fas fa-user-friends"></i></div>
+          <h4>Сообщество</h4>
+          <p>Доступ к закрытому чату моделей и обмен опытом.</p>
+        </div>
+      </div>
+
+      <!-- Дополнительные описательные карточки (повторяются) -->
+      <div class="mb-6" style="display:grid; grid-template-columns: repeat(3,1fr); gap:12px;">
+        <div style="padding:12px; border-radius:10px; background:#fff; box-shadow:var(--shadow-sm);">
+          <strong>План развития</strong>
+          <p style="color:var(--muted); font-size:13px; margin-top:8px;">Индивидуальная дорожная карта роста.</p>
+        </div>
+
+        <div style="padding:12px; border-radius:10px; background:#fff; box-shadow:var(--shadow-sm);">
+          <strong>Аналитика</strong>
+          <p style="color:var(--muted); font-size:13px; margin-top:8px;">Полная статистика по эфиру и рекомендациям.</p>
+        </div>
+
+        <div style="padding:12px; border-radius:10px; background:#fff; box-shadow:var(--shadow-sm);">
+          <strong>Съемка</strong>
+          <p style="color:var(--muted); font-size:13px; margin-top:8px;">Помощь с кадром и визуалом для трансляций.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         BENEFITS (много повторяющихся карточек)
+         ========================================================================= -->
+    <section class="section container" id="benefits">
+      <h2 class="section-title center" style="font-size:26px;">Преимущества</h2>
+      <p class="center" style="color:var(--muted); margin-bottom:28px;">Почему выбирают нас</p>
+
       <div class="benefits-grid">
-        <div class="benefit-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920223.png" alt="Дом">
-          <h3>Работа из дома</h3>
-          <p>Всё, что тебе нужно — ноутбук и интернет.</p>
+        <div class="benefit">
+          <h3 style="margin-bottom:8px;">Работа из дома</h3>
+          <p style="color:var(--muted);">Гибкий график и безопасность — работа там, где вам удобно.</p>
         </div>
-        <div class="benefit-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" alt="Доход">
-          <h3>Высокий доход</h3>
-          <p>Стабильные выплаты и премии для активных моделей.</p>
+
+        <div class="benefit">
+          <h3 style="margin-bottom:8px;">Высокий доход</h3>
+          <p style="color:var(--muted);">Опытные менеджеры помогают максимизировать заработок.</p>
         </div>
-        <div class="benefit-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png" alt="Анонимность">
-          <h3>Анонимность</h3>
-          <p>Мы гарантируем полную конфиденциальность твоей работы.</p>
+
+        <div class="benefit">
+          <h3 style="margin-bottom:8px;">Поддержка 24/7</h3>
+          <p style="color:var(--muted);">Техническая и психологическая помощь в любой момент.</p>
+        </div>
+
+        <div class="benefit">
+          <h3 style="margin-bottom:8px;">Персональное продвижение</h3>
+          <p style="color:var(--muted);">Продвижение через партнерские каналы и рекламу.</p>
+        </div>
+
+        <div class="benefit">
+          <h3 style="margin-bottom:8px;">Лучшие инструменты</h3>
+          <p style="color:var(--muted);">Аналитика, CRM и инструменты роста — сразу в пакете.</p>
+        </div>
+
+        <div class="benefit">
+          <h3 style="margin-bottom:8px;">Доступ к инсайтам</h3>
+          <p style="color:var(--muted);">Разбор трендов и рекомендации по контенту.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Тарифы -->
-  <section id="tariffs" class="tariffs">
-    <div class="container">
-      <h2 class="section-title">Тарифы</h2>
+      <!-- Еще подробностей -->
+      <div style="margin-top:20px; background:#fff; padding:14px; border-radius:12px; box-shadow:var(--shadow-sm);">
+        <p style="color:var(--muted);">Поддержка и обучение входят в большинство наших пакетов — уточняйте условия при обращении.</p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TARIFFS (ведущая секция с 3 тарифами — увеличим количество копиями для объема)
+         ========================================================================= -->
+    <section class="section container" id="tariffs">
+      <h2 class="section-title center" style="font-size:26px;">Наши тарифы</h2>
+      <p class="center" style="color:var(--muted); margin-bottom:28px;">Выберите, что подходит именно вам</p>
+
       <div class="tariffs-grid">
-        <div class="tariff-card">
-          <h3>Старт</h3>
-          <p>10% комиссия</p>
+        <div class="tariff">
+          <div class="name">ВСЁ САМА</div>
+          <div class="price">20%</div>
+          <p style="color:var(--muted); margin-bottom:8px;">Для независимых моделей, которые ведут эфир самостоятельно.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Поддержка настройки</li>
+            <li><i class="fas fa-check"></i> Статистика и базовые рекомендации</li>
+            <li><i class="fas fa-check"></i> Еженедельные выплаты</li>
+          </ul>
+          <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
         </div>
-        <div class="tariff-card">
-          <h3>Профи</h3>
-          <p>5% комиссия</p>
+
+        <div class="tariff popular">
+          <div class="name">КОУЧ ПЛЮС</div>
+          <div class="price">30%</div>
+          <p style="color:var(--muted); margin-bottom:8px;">Оптимальный вариант — коучинг и регулярный разбор.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Персональный коуч</li>
+            <li><i class="fas fa-check"></i> Разбор эфиров</li>
+            <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
+          </ul>
+          <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
         </div>
-        <div class="tariff-card">
-          <h3>VIP</h3>
-          <p>Индивидуальные условия</p>
+
+        <div class="tariff">
+          <div class="name">ЛИЧНЫЙ ОПЕРАТОР</div>
+          <div class="price">40%</div>
+          <p style="color:var(--muted); margin-bottom:8px;">Максимальная забота — менеджер, продвижение и премиум-функции.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Менеджер 24/7</li>
+            <li><i class="fas fa-check"></i> Помощь с контентом</li>
+            <li><i class="fas fa-check"></i> VIP условия</li>
+          </ul>
+          <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Калькулятор -->
-  <section id="calc">
-    <div class="container">
-      <h2 class="section-title">Калькулятор дохода</h2>
-      <div class="calculator-container">
-        <label>Часы в день: <input type="number" id="hours" value="4"></label>
-        <label>Ставка $/час: <input type="number" id="rate" value="10"></label>
-        <p>Доход в месяц: <span id="result" style="color:#ff0080;font-weight:700;">$1200</span></p>
+      <!-- Повторяем те же тарифы ещё раз (для плотности, можно убрать) -->
+      <div style="margin-top:22px;" class="tariffs-grid">
+        <div class="tariff">
+          <div class="name">СТАНДАРТ</div>
+          <div class="price">25%</div>
+          <p style="color:var(--muted); margin-bottom:8px;">Легкий старт для новичков.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Быстрый вход</li>
+            <li><i class="fas fa-check"></i> Поддержка базы</li>
+          </ul>
+          <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
+        </div>
+
+        <div class="tariff popular">
+          <div class="name">ПРЕМЬЕР</div>
+          <div class="price">35%</div>
+          <p style="color:var(--muted); margin-bottom:8px;">Доступ к расширенным возможностям продвижения.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Продвижение</li>
+            <li><i class="fas fa-check"></i> Коуч и менеджер</li>
+          </ul>
+          <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
+        </div>
+
+        <div class="tariff">
+          <div class="name">VIP</div>
+          <div class="price">50%</div>
+          <p style="color:var(--muted); margin-bottom:8px;">Индивидуальные условия, реклама и PR.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Реклама</li>
+            <li><i class="fas fa-check"></i> VIP поддержка</li>
+          </ul>
+          <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section id="cta" class="cta">
-    <h2>Начни зарабатывать прямо сейчас</h2>
-    <p>Присоединяйся к команде StripUp и получи первые выплаты уже в этом месяце.</p>
-    <a href="#" class="btn btn-telegram"><i class="fa-brands fa-telegram"></i> Подключиться</a>
-  </section>
+    <!-- =========================================================================
+         CALCULATOR (развернутый)
+         ========================================================================= -->
+    <section class="section" id="calc">
+      <div class="container">
+        <h2 style="font-family:'Playfair Display', serif; font-size:26px; text-align:center; margin-bottom:12px;">Калькулятор заработка</h2>
+        <p style="text-align:center; color:var(--muted); margin-bottom:20px;">Посчитайте потенциальный недельный доход после комиссии</p>
 
-  <!-- Футер -->
-  <footer>
-    <div class="container">
-      <p>© 2025 StripUp. Все права защищены.</p>
-    </div>
-  </footer>
+        <div class="calculator">
+          <div style="display:grid; gap:12px;">
+            <div class="calc-row">
+              <label for="hours">Часы в неделю</label>
+              <input id="hours" class="calc-input" type="number" min="0" value="20">
+            </div>
 
+            <div class="calc-row">
+              <label for="rate">Ожидаемый доход в час (руб)</label>
+              <input id="rate" class="calc-input" type="number" min="0" value="2000">
+            </div>
+
+            <div class="calc-row">
+              <label for="selectTariff">Комиссия</label>
+              <select id="selectTariff" class="calc-input">
+                <option value="0.2">Всё сама — 20%</option>
+                <option value="0.3" selected>Коуч плюс — 30%</option>
+                <option value="0.4">Личный оператор — 40%</option>
+              </select>
+            </div>
+
+            <div class="result-box" id="calcResult">Загрузка...</div>
+          </div>
+        </div>
+
+        <!-- Блок с подробными расчетами для прозрачности -->
+        <div style="margin-top:16px; background:#fff; padding:14px; border-radius:12px; box-shadow:var(--shadow-sm);">
+          <h4 style="margin-bottom:8px;">Подробный расчёт</h4>
+          <p style="color:var(--muted);">Результат учитывает только базовые параметры — реальные показатели зависят от активности и конверсии.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         HOW IT WORKS
+         ========================================================================= -->
+    <section class="section container" id="how">
+      <h2 class="section-title center" style="font-size:26px;">Как начать?</h2>
+      <p class="center" style="color:var(--muted); margin-bottom:28px;">Три простых шага до старта</p>
+
+      <div class="how-grid">
+        <div class="step">
+          <div class="num">1</div>
+          <h4 style="margin:10px 0 6px;">Напиши в Telegram</h4>
+          <p style="color:var(--muted);">Свяжись с нами — расскажем о доступных тарифах и ответим на вопросы.</p>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <h4 style="margin:10px 0 6px;">Пройди обучение</h4>
+          <p style="color:var(--muted);">Бесплатный курс и разбор по технике ведения эфиров.</p>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <h4 style="margin:10px 0 6px;">Начни стримить</h4>
+          <p style="color:var(--muted);">Начинай принимать гостей и зарабатывать уже в первую неделю.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CTA
+         ========================================================================= -->
+    <section class="section container">
+      <div class="cta">
+        <h2>Готовы изменить свою жизнь прямо сейчас?</h2>
+        <p>Присоединяйтесь к StripUp — оставьте заявку или напишите в Telegram, и мы поможем с первым эфиром.</p>
+        <a href="https://t.me/stripup_support" class="btn btn-primary"><i class="fab fa-telegram"></i> Присоединиться</a>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         FOOTER
+         ========================================================================= -->
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3 style="margin-bottom:12px;">StripUp</h3>
+          <p style="color:var(--muted);">Вебкам студия: обучение, поддержка, выплаты.</p>
+          <div style="margin-top:10px;">
+            <a href="https://t.me/stripup_support" style="display:inline-block; padding:8px 12px; background:var(--accent); border-radius:10px; color:#6b1b4d; font-weight:800;"><i class="fab fa-telegram"></i> Telegram</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom:12px;">Навигация</h3>
+          <ul style="list-style:none; color:var(--muted);">
+            <li><a href="#hero">Главная</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#tariffs">Тарифы</a></li>
+            <li><a href="#benefits">Преимущества</a></li>
+            <li><a href="#calc">Калькулятор</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom:12px;">Контакты</h3>
+          <p style="color:var(--muted);"><i class="fab fa-telegram"></i> @stripup_support</p>
+          <p style="color:var(--muted);"><i class="fas fa-clock"></i> Поддержка 24/7</p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:28px; color:var(--muted); font-size:14px;">
+        © 2025 StripUp. Все права защищены. | Политика конфиденциальности
+      </div>
+    </footer>
+  </main>
+
+  <!-- =========================================================================
+       Встроенный JS — расширенный, комментированный и с несколькими утилитами
+       ========================================================================= -->
   <script>
-    // Калькулятор
-    const hours = document.getElementById('hours');
-    const rate = document.getElementById('rate');
-    const result = document.getElementById('result');
-    function updateCalc() {
-      const h = parseFloat(hours.value) || 0;
-      const r = parseFloat(rate.value) || 0;
-      result.textContent = "$" + (h * r * 30);
+    /* =======================================================================
+       Утилиты и вспомогательные функции
+       ======================================================================= */
+
+    // Функция-помощник: формат числа в рубли
+    function formatRub(num) {
+      try {
+        return num.toLocaleString('ru-RU') + ' ₽';
+      } catch(e) {
+        return Math.round(num) + ' ₽';
+      }
     }
-    hours.addEventListener('input', updateCalc);
-    rate.addEventListener('input', updateCalc);
-    updateCalc();
+
+    // Проверяем, что DOM готов (встраиваем простую совместимость)
+    (function ready(fn) {
+      if (document.readyState !== 'loading') fn();
+      else document.addEventListener('DOMContentLoaded', fn);
+    })(function() {
+      // Элементы калькулятора
+      const hoursInput = document.getElementById('hours');
+      const rateInput  = document.getElementById('rate');
+      const tariffSel  = document.getElementById('selectTariff');
+      const resultBox  = document.getElementById('calcResult');
+
+      // Функция расчета дохода
+      function calculate() {
+        const hours = parseFloat(hoursInput.value) || 0;
+        const rate  = parseFloat(rateInput.value) || 0;
+        const commission = parseFloat(tariffSel.value) || 0.3;
+
+        // Доход до комиссии
+        const gross = hours * rate;
+        // Чистый доход после комиссии
+        const net = gross * (1 - commission);
+
+        // Отображаем детально
+        resultBox.innerHTML = ''
+          + '<div style="font-size:14px; color:#6b1b4d; margin-bottom:6px;">Доход до комиссии: <strong>' + formatRub(gross) + '</strong></div>'
+          + '<div style="font-size:20px; font-weight:900;">Ожидаемый доход после комиссии: ' + formatRub(net) + '</div>'
+          + '<div style="margin-top:8px; font-size:13px; color:rgba(107,27,77,0.7);">Комиссия: ' + (commission*100).toFixed(0) + '%</div>'
+        ;
+      }
+
+      // Слушатели
+      [hoursInput, rateInput, tariffSel].forEach(el => el.addEventListener('input', calculate));
+      calculate(); // инициализация при загрузке
+
+      /* =======================================================================
+         Превью загружаемых изображений
+         ======================================================================= */
+      const fileInput = document.getElementById('fileInput');
+      const previewImg = document.getElementById('previewImg');
+      const previewArea = document.getElementById('previewArea');
+      const resetBtn = document.getElementById('resetPreview');
+
+      if (fileInput && previewImg) {
+        fileInput.addEventListener('change', function(e) {
+          const file = e.target.files && e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = function(evt) {
+            previewImg.src = evt.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+
+        resetBtn.addEventListener('click', function() {
+          previewImg.src = 'https://images.unsplash.com/photo-1542204165-ecf1f6f1f1ea?auto=format&fit=crop&w=1200&q=60';
+          fileInput.value = '';
+        });
+      }
+
+      /* =======================================================================
+         Плавная прокрутка для якорных ссылок
+         ======================================================================= */
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+          const target = this.getAttribute('href');
+          if (!target || target === '#') return;
+          const el = document.querySelector(target);
+          if (!el) return;
+          e.preventDefault();
+          const top = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+      });
+
+      /* =======================================================================
+         IntersectionObserver — анимация появления блоков при скролле
+         ======================================================================= */
+      const obsOptions = { root:null, threshold: 0.08, rootMargin: '0px' };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.transform = 'translateY(0)';
+            entry.target.style.opacity = '1';
+            entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, obsOptions);
+
+      // Отмечаем несколько типов элементов для наблюдения
+      const animTargets = document.querySelectorAll('.feature, .benefit, .tariff, .step, .hero-card, .upload-card');
+      animTargets.forEach(t => {
+        t.style.opacity = '0';
+        t.style.transform = 'translateY(18px)';
+        observer.observe(t);
+      });
+
+      /* =======================================================================
+         Клик по логотипу — прокрутка вверх
+         ======================================================================= */
+      const logoLink = document.getElementById('logoLink');
+      if (logoLink) {
+        logoLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      /* =======================================================================
+         Мини-логирование: отслеживание кликов по кнопкам "Выбрать тариф"
+         (демонстрация простого tracking'а, здесь просто console.log)
+         ======================================================================= */
+      document.querySelectorAll('.tariff .btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          // Пример сбора данных
+          const parent = btn.closest('.tariff');
+          const name = parent ? (parent.querySelector('.name') && parent.querySelector('.name').textContent.trim()) : 'unknown';
+          // В реальном проекте сюда бы ушёл запрос на сервер аналитики
+          console.log('Выбран тариф:', name);
+        });
+      });
+
+      /* =======================================================================
+         Дополнительный код: демо функции для работы с локальным хранилищем
+         (сохраняем последние значения калькулятора)
+         ======================================================================= */
+      function persistCalc() {
+        try {
+          localStorage.setItem('stripup_hours', hoursInput.value);
+          localStorage.setItem('stripup_rate', rateInput.value);
+          localStorage.setItem('stripup_tariff', tariffSel.value);
+        } catch(e) { /* ignore */ }
+      }
+      [hoursInput, rateInput, tariffSel].forEach(el => el.addEventListener('change', persistCalc));
+
+      // Восстановление
+      try {
+        const ph = localStorage.getItem('stripup_hours');
+        const pr = localStorage.getItem('stripup_rate');
+        const pt = localStorage.getItem('stripup_tariff');
+        if (ph) hoursInput.value = ph;
+        if (pr) rateInput.value = pr;
+        if (pt) tariffSel.value = pt;
+        calculate();
+      } catch(e) { /* ignore */ }
+
+    }); // конец ready
+
+    /* =======================================================================
+       Дополнительные функциональные фрагменты (запас)
+       Здесь можно расширять скрипт: интеграция с формой, отправка на сервер,
+       валидация, всплывающие модальные окна и т.д.
+       ======================================================================= */
+
+    // Пример небольшой утилиты для генерации случайных отзывов (демо)
+    (function randomReviewsDemo() {
+      // Генерация занимательного сообщения в консоль для демонстрации
+      const reviews = [
+        "Отличная команда, быстро помогли стартовать!",
+        "Удобно работать из дома, поддержка 24/7.",
+        "Хорошие выплаты и прозрачные условия."
+      ];
+      // Логируем один случайный отзыв
+      console.log("Demo review:", reviews[Math.floor(Math.random()*reviews.length)]);
+    })();
+
   </script>
 </body>
 </html>
